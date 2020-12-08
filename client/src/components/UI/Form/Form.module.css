@@ -1,0 +1,60 @@
+
+
+.Form {
+    height: fit-content;
+}
+
+.Form h1 {
+    margin: 25px 0 1px 15px;
+    color: #3D3F3F;
+    font-size: var(--medium-font-size);
+    letter-spacing: 0;
+    line-height: 29px;
+}
+
+.Form h3 {
+    color: var(--primary-color);
+    font-weight: normal;
+    margin:  0 0 10px 15px;
+    padding: 0;
+}
+
+.Form button {
+    box-sizing: border-box;
+    margin-left: 15px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    height: 50px;
+    width: 168px;
+    border: 1px solid #979797;
+    border-radius: 5px;
+    color: white;
+    font-size: var(--small-font-size);
+    background-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.Form button:disabled {
+    cursor: not-allowed;
+}
+
+.Form input[type="text"] {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.Form label {
+    margin: 0;
+}
+
+.TwoColumns {
+    column-count: 2;
+}
+
+.Line {
+    box-sizing: border-box;
+    margin-left: 15px;
+    height: 1px;
+    width: 341px;
+    border: 1px solid #B7D0D2;
+}

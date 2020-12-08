@@ -1,0 +1,73 @@
+.Leads {
+    /* position: fixed; */
+    box-sizing: border-box;
+    width: calc(100vw - 250px);
+    height: 100vh;
+    background-color: var(--background-color) !important;
+}
+
+.LeadContent {
+    /* position: relative; */
+    height: auto;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 0 0 65px;
+}
+
+.TitleBar {
+    display: flex;
+    width: calc(100vw - 400px);
+    max-width: 1024px;;
+    margin-right: 15%;
+    justify-content:  space-between;
+    color: black;
+    padding: 0;
+}
+
+.LeadsBox {
+    width: calc(100vw - 400px);
+    height: calc(100% - 200px);
+    position: absolute;
+    white-space:nowrap;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+}
+
+.Title {
+    display: flex;
+}
+
+.TitleHeader {
+    margin: 40px 0 40px 0;
+    color: var(--primary-color);
+    font-size: var(--medium-font-size);
+}
+
+.TitleHeader h {
+    color: black;
+    margin: 0;
+    padding: 0;
+    font-size: 3rem;
+}
+
+/* @media (min-width: 701px) {
+    .Leads {
+        margin: 80px 10px 10px 160px;
+        width: calc(100% - 170px);
+        height: calc(100% - 100px);
+    }
+} */
+
+.Button {
+    box-sizing: border-box;
+    margin-top: 32px;
+    height: 50px;
+    width: 192px;
+    border: 1px solid #979797;
+    border-radius: 5px;
+    color: var(--primary-text-color);
+    font-size: var(--button-font-size);
+    background-color: #075056;
+    cursor: pointer;
+}

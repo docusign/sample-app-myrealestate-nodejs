@@ -1,0 +1,61 @@
+.Room {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 50px;
+    width: calc(100vw - 220px);
+    height: 100vh;
+    background-color: var(--background-color);
+}
+
+.RoomTitleBar h1 {
+    font-weight: normal;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.Room h3 {
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+.RoomContent {
+    max-width: 1000px;
+}
+.RoomTitleBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.EditButtons button{
+    outline: none;
+    cursor: pointer;
+    border-radius: 12px;
+    font-family: Helvetica, sans-serif;
+    font-size: var(--small-font-size);
+    height: 50px;
+    width: 168px;
+    border: 1px solid #979797;
+    border-radius: 5px;
+    font-size: var(--small-font-size);
+    margin-right: 10px
+}
+
+.EditButtons button:last-child{
+    margin-right: 0;
+}
+
+.EditButtonPOS {
+    color: white;
+    background-color: var(--primary-color);
+}
+
+.EditButtonCancel {
+    background-color: white;
+    color: black;
+}
+
+.DispalyContent{
+    margin-top: 20px;
+}

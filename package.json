@@ -1,0 +1,50 @@
+{
+  "name": "rooms-sample-app",
+  "version": "1.0.0",
+  "description": "A sample application showing off the Docusign Rooms API. This application emulates a real estate office's CRM with rooms API integration.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client-install": "npm install --prefix client",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.docusignhq.com/DPE/rooms-sample-app.git"
+  },
+  "keywords": [
+    "Rooms",
+    "API",
+    "Docusign"
+  ],
+  "author": "David Kennedy",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.2.0",
+    "cookie-parser": "^1.4.5",
+    "cookie-session": "^1.4.0",
+    "cookies": "^0.8.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "csurf": "^1.11.0",
+    "docusign-esign": "^5.7.0",
+    "docusign-rooms": "1.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "fs": "0.0.1-security",
+    "helmet": "^3.23.3",
+    "memorystore": "^1.6.2",
+    "moment": "^2.27.0",
+    "mongoose": "^5.9.20",
+    "validator": "^13.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

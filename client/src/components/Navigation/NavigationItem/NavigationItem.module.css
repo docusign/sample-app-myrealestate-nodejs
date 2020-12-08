@@ -1,0 +1,29 @@
+.NavigationItem {
+    box-sizing: border-box;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-left: 26px;
+    height: 68px;
+    cursor: pointer;
+}
+
+.NavigationItem p {
+    color: white;
+    font-weight: 900;
+    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 15px;
+    display: block;
+}
+
+.Active {
+    background-color: #03383C;
+    border-bottom: 1px solid white;
+
+}
+
+

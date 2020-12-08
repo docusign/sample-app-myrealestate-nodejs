@@ -1,0 +1,7 @@
+.Info {
+    font-size: var(--small-font-size) !important;
+    margin: 10px 0;
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
+}

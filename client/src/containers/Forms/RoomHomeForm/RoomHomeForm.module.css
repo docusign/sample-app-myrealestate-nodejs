@@ -1,0 +1,7 @@
+.Layout {
+    box-sizing: border-box;
+    width: 80%;
+    border: 2px solid darkcyan;
+    max-height: calc(100vh - 300px);
+    overflow: scroll;
+}

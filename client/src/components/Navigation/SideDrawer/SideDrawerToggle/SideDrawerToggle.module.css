@@ -1,0 +1,23 @@
+.SideDrawerToggle {
+    height: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    z-index: 200px;
+    display: none;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.SideDrawerToggle div {
+    width: 90%;
+    height: 3px;
+    background-color: white;
+}
+
+@media (max-width: 701px) {
+    .SideDrawerToggle {
+        display: inline-block;
+    }
+}

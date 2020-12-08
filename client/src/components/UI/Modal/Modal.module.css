@@ -1,0 +1,51 @@
+.Modal {
+    position: fixed;
+    z-index: 500;
+    background-color: white;
+    width: 60%;
+    max-height: 90%;
+    border: 1px solid black;
+    box-shadow: 2px 2px 2px grey;
+    padding: 15px;
+    left: 20%;
+    top: 90px;
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;
+    white-space: normal;
+    overflow-y: scroll;
+}
+
+.Modal p, .Modal h1, .Modal h2, .Modal h3 {
+    color: black;
+}
+
+.Hidden {
+    transform: translateY(-100vh);
+    opacity: 0;
+}
+
+.Displayed {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.Form {
+    left: calc(50% - 200px);
+    width: 400px;
+}
+
+#CloseIcon {
+    width: 17px;
+    height: 17px;
+    margin: 0;
+    position: absolute;
+    cursor: pointer;
+    top: 25px;
+    right: 22px;
+}
+
+@media (min-width: 600px) {
+    .Modal {
+        max-width: 1500px;
+    }
+}

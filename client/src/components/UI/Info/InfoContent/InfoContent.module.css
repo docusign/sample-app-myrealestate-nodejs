@@ -1,0 +1,81 @@
+.Form {
+    font-style: normal;
+    text-align: left;
+    margin: 10px;
+}
+
+.Form h1 {
+    margin: 0 0 10px 0;
+    font-size: var(--large-font-size);
+    color: var(--primary-color);
+}
+
+.Form h2 {
+    margin: 0 0 5px 0;
+    font-size: var(--small-font-size);
+    color: var(--primary-color);
+}
+
+.Form h3 {
+    margin: 0;
+    padding-left: 25px;
+    font-size: var(--small-font-size);
+}
+
+.Form ul {
+    color: black;
+    font-size: var(--small-font-size);
+    padding-left: 21px;
+    margin: 0;
+}
+
+
+
+.Form ul li a {
+    font-size: var(--small-font-size);
+    line-height: var(--small-font-size);
+    font-weight: bold;
+    display: inline;
+    color: darkblue;
+    text-decoration: underline;
+    margin: 0;
+    padding: 0;
+}
+
+.CodeFlow {
+    margin: 10px auto;
+    padding: 10px;
+    width: 80%;
+    background-color: var(--background-color);
+}
+
+.Form p {
+    border: none;
+    margin: 0 0 5px 0;
+    font-size: var(--small-font-size);
+    line-height: var(--small-font-size);;
+}
+
+.Form .CodeFlow p {
+    padding-left: 25px;
+    margin: 0 0 8px 0;
+    line-height: var(--small-font-size);
+}
+
+.Form .CodeFlow p a {
+    font-size: var(--small-font-size);
+    line-height: var(--small-font-size);
+    font-weight: bold;
+    display: inline;
+    color: darkblue;
+    text-decoration: underline;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.Title {
+    font-size: 2rem;
+    color: blue;
+}

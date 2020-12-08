@@ -1,0 +1,104 @@
+
+.Login {
+    box-sizing: border-box;
+    color: white;
+    width: 100vw;
+    height: 100vh;
+    min-height: 850px;
+}
+
+.LoginContent {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 120px auto;
+    padding: 0;
+    width: 100%;
+}
+
+.MessageBox {
+    margin: auto;
+    width: 80%;
+    max-width: 1500px;
+    font-family: Helvetica, sans-serif
+}
+
+.MessageBox h1 {
+    font-family: Helvetica, sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 36px;
+    margin-bottom: 30px;
+}
+
+.MessageBox p {
+    font-family: Helvetica, sans-serif;
+    font-size: 18px;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 24px;
+    margin-bottom: 50px;
+}
+
+.ButtonGroup {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.ButtonGroup button {
+    height: 79px;
+    width: 300px;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    border: none;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.15);
+    color: #358F97;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 29px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.ButtonGroup button:focus {
+    outline: none;
+    background-color: lightgray;
+}
+
+.ButtonGroup a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 79px;
+    width: 300px;  
+    color: white;
+    text-decoration: none;  
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 29px;
+    cursor: pointer;
+}
+
+.LoginButtonGroup {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.GithubLink {
+    padding-bottom: 39px;
+}
+
+@media (min-width: 701px) {
+
+}

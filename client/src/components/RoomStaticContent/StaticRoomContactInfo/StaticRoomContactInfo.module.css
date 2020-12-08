@@ -1,0 +1,29 @@
+.Info {
+    box-sizing: border-box;
+    width: 80%;
+    max-height: calc(100vh - 300px);
+    overflow: scroll;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.ContactBox {
+    box-sizing: border-box;
+    padding: 15px;
+    width: 50%;
+    
+}
+
+.Group {
+    margin: 25px 15px;
+}
+
+.Contact {
+    border: 2px solid darkcyan;
+    box-shadow: darkgrey;
+}
+
+.Contact p {
+    margin: 0 0 0 10px;
+}

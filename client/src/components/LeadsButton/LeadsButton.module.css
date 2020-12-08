@@ -1,0 +1,9 @@
+.LeadsButton{
+    width: 100%;
+    margin: auto;
+    display: block;
+    background-color: green;
+    color: white;
+    width: 150px;
+    height: 50px;
+}

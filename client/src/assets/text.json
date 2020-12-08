@@ -1,0 +1,180 @@
+{
+    "login": {
+        "title": "Welcome to the MyRealEstate Sample Application",
+        "paragraph": "This app was designed to showcase the potential integration of the Docusign Rooms API into a RealEstate CRM. This application is open sourced and all of the code is located in our GitHub repository.",
+        "loginButton": "Try the App",
+        "GitHub": "Go to GitHub",
+        "info": {
+            "title": "Login info",
+            "paragraph1": "The action demostrates the login feature:",
+            "listItem1": "Obtain a jwt (Java web token) for use in future API calls",
+            "listItem2": "Obtain the DocuSign Rooms account info necessary for furutre API calls",
+            "listItem3Part1": "(optional) Adds the user to a unique ",
+            "listItem3Part2": "office",
+            "codeflow": "Code flow",
+            "step1": "Step 1:",
+            "step1info1": "Obtain the jwt",
+            "step1info2": "with the correct permissions required by the application. This application employs rooms read and write permissions along with company read and write permissions",
+            "step2": "Step 2:",
+            "step2info1": "Obtain the user's Room userId information using the Rooms",
+            "step2info2": "UsersGetUsers",
+            "step3": "Step 3:",
+            "step3info1": "This application has every user logged in to the same account in order to simplify the sample application. In order to do so every user is assigned a unique officeId which is stored in local storage. If the user has not logged in before or has cleared his/her local storage, a new office is created using the method",
+            "step3info2": "Offices:CreateOffice",
+            "step3info3": "and the user is added to this office using the method",
+            "step3info4": "Users:AddUserToOffice",
+            "step3info5": "."
+        }
+    },
+    "sandboxbanner": {
+        "title": "DocuSign: It's time to agree better",
+        "paragraph": "DocuSign helps organizations connect and automate how they prepare, sign, act on and manage agreements.",
+        "createbutton": "Create Demo Account",
+        "learnmore": "Learn More"
+    },
+    "footer": {
+        "message": "2020 DocuSign Inc."
+    },
+    "toolbar": {
+        "title": "My Real Estate",
+        "message": "Hello person! "
+    },
+    "sidedrawer": {
+        "Login": "Login",
+        "Leads": "Leads",
+        "Rooms": "Transactions"
+    },
+    "roombar": {
+        "openButtonName": "Open Transactions",
+        "closedButtonName": "Closed Transactions"
+    },
+    "leads" : {
+        "create": "+Add new lead",
+        "title": "Leads",
+        "info": {
+            "title": "Create Room Info",
+            "paragraph1": "The create transaction button demostrates how to create a Room using the DocuSign Rooms API",
+            "listItem1part1": "Obtain the user's data for the new",
+            "listItem1part2": "Room",
+            "listItem2": "Create the new Room",
+            "listItem3Part1": "(optional) Adds the user to a unique ",
+            "listItem3Part2": "office",
+            "codeflow": "Code flow",
+            "step1": "Step 1:",
+            "step1info": "Once clicked, the create transaction button packages the lead information along with the user input form information together into a Room object to send to the API endpoint",
+            "step2": "Step 2:",
+            "step2info1": "The room is then created via the ",
+            "step2info2": "Rooms:CreateRoom",
+            "step2info3": "API endpoint"
+        }
+    },
+    "lead": {
+        "phone": "Phone Number",
+        "email": "Email Address",
+        "create": "Create Transaction",
+        "view": "View Transaction"
+    },
+    "rooms": {
+        "title": "Transactions",
+        "date":  "Date Modifed:",
+        "info": {
+            "title": "Get Rooms Info",
+            "paragraph1": "This page demostrates how to get all the rooms associated with an office as well as how to get all the field info of a specific Room.",
+            "listItem1part1": "Get all of the",
+            "listItem1part2": "rooms",
+            "listItem1part3": "associated with the user's",
+            "listItem1part4": "office",
+            "listItem1part5": ".",
+            "listItem2": "Get the field data for a specific room.",
+            "listItem3Part1": "(optional) Adds the user to a unique ",
+            "listItem3Part2": "office",
+            "codeflow": "Code flow",
+            "step1": "Step 1:",
+            "step1info1": "The rooms for a specific office are obtained via the",
+            "step1info2": "Rooms:GetRooms",
+            "step1info3": "API endpoint.",
+            "step2": "Step 2:",
+            "step2info1": "The room info and its field data can obtained via the",
+            "step2info2": "Rooms:GetRoom",
+            "step2info3": "API endpoint and including the includeFieldData query paramater. Just its field data can be obtained via a the",
+            "step2info4": "Rooms:GetRoomFieldData",
+            "step2info5": "API endpoint."
+        }
+    },
+    "room": {
+        "transaction": "Transaction:",
+        "id": "ID:",
+        "created": "Created:",
+        "info": {
+            "title": "Get/Edit Room Info",
+            "paragraph1": "This page demostrates how to get the field data for a Room and how to modify this data via the Rooms API.",
+            "listItem1": "Get the data for a room using it's roomId (an integer number unique to each room)",
+            "listItem2": "Update any of the field data for that Room",
+            "codeflow": "Code flow",
+            "step1": "Step 1:",
+            "step1info1": "The field data for a specific room can be obtained via the",
+            "step1info2": "Rooms:GetRoomFieldData",
+            "step1info3": "API endpoint with the roomId of the specified room.",
+            "step2": "Step 2:",
+            "step2info1": "The field data for a room",
+            "step2info2": "Rooms:UpdateRoomFieldData",
+            "step2info3": "Api endpoint"
+        }
+    },
+    "newRoomForm": {
+        "name": "Transaction Name",
+        "side": "Transaction Side",
+        "address": "Address",
+        "city": "City",
+        "state": "State",
+        "country": "Country",
+        "zipcode": "Postal Code"
+    },
+    "newContactForm": {
+        "first": "First Name",
+        "last": "Last Name",
+        "email": "Email Address",
+        "phone": "Phone Number"
+
+    },
+    "propertyInfo": {
+        "taxAnnualAmount": "Annual Tax:",
+        "roomsTotal": "Number of Rooms:",
+        "bedroomsTotal": "Number of Bedrooms:",
+        "bathroomsTotal": "Number of Bathrooms:",
+        "garageSpaces": "Number of Parking Spaces:",
+        "lotSizeAcres": "Lot size (acres):",
+        "lotSizeSquareFeet": "Square Footage:",
+        "mlsId": "MLS ID:"
+    },
+    "roomContactInfo": {
+        "name": "Name:",
+        "email": "Email:",
+        "phone": "Phone Number:"
+    },
+    "staticRoomHome": {
+        "address": "Address:",
+        "country": "Country:",
+        "state": "State:",
+        "city": "City:",
+        "postalCode": "Postal Code:",
+        "addressCntd": "Address cntd:",
+        "price": "List Price:",
+        "contract": "Under Conttractr:"
+    },
+    "contactInfoForm": {
+        "buyer1": "Buyer 1",
+        "buyer2": "Buyer 2",
+        "seller1": "Seller 1",
+        "seller2": "Seller 2",
+        "buyerAgent1": "Buyer Agent",
+        "listingAgent1" : "Listing Agent",
+        "submit": "Submit"
+
+    },
+    "links" : {
+        "github": "https://github.docusignhq.com/DPE/rooms-sample-app",
+        "createsandbox": "https://go.docusign.com/o/sandbox/",
+        "devcenter": "https://developers.docusign.com/"
+    }
+}

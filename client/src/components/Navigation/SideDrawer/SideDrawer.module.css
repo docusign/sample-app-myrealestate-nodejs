@@ -1,0 +1,35 @@
+.SideDrawer {
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    top: 90px;
+    height: 100%;
+    width: 250px;
+    max-width: 70%;
+    background-color:  #075056;
+    transition: transform 0.35s ease-out;
+}
+
+.NavigationItems {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.Open {
+    transform: translateX(0);
+}
+
+.Close {
+    transform: translatex(-100%);
+}
+
+@media (max-width: 500px) {
+    .SideDrawer {
+        display: none;
+    }
+}

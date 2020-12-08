@@ -1,0 +1,39 @@
+{
+    "leads": [
+        {
+            "firstName": "Sample",
+            "lastName": "User1",
+            "phoneNumber": "(206) 983-3949",
+            "email": "docusigntest1@gmail.com",
+            "containsRoom": false
+        },
+        {
+            "firstName": "Sample",
+            "lastName": "User2",
+            "phoneNumber": "(206) 232-3249",
+            "email": "docusigntest2@gmail.com",
+            "containsRoom": false
+        },
+        {
+            "firstName": "Sample",
+            "lastName": "User3",
+            "phoneNumber": "(243) 756-5432",
+            "email": "docusigntest3@gmail.com",
+            "containsRoom": false
+        },        
+        {
+            "firstName": "Sample",
+            "lastName": "User4",
+            "phoneNumber": "(765) 978-9634",
+            "email": "docusigntest4@gmail.com",
+            "containsRoom": false
+        },        
+        {
+            "firstName": "Sample",
+            "lastName": "User5",
+            "phoneNumber": "(853) 369-7853",
+            "email": "docusigntest5@gmail.com",
+            "containsRoom": false
+        }
+    ]
+}

@@ -1,0 +1,108 @@
+import React, { Component } from 'react';
+import axios from 'axios';
+import textContent from '../../assets/text.json';
+import Info from '../../components/UI/Info/Info';
+import Backdrop from '../../components/UI/Backdrop/Backdrop'
+import SandboxBanner from '../../components/UI/SandboxBanner/SandboxBanner';
+import Footer from '../../components/UI/Footer/Footer';
+import SecureLS from 'secure-ls';
+import BackgroundImage from '../../assets/images/login_background.png';
+import LinkImage from '../../assets/images/ExternalLink.png';
+
+import classes from './Login.module.css'
+
+/*
+    React container that renders the login page
+    props:
+        click: (function) changes the state of the Layout parent container
+            so that the selected page is leads, rendering the leads container
+        roleChange: (function) changes the role of the user in the state of 
+            the Layout container. 
+        
+    author: David Kennedy
+*/
+class Login extends Component {
+    state = {
+        showInfo: false
+    }
+    
+    modalToggleHandler = () => {
+        this.setState((prevState, props) => ({
+            showInfo: !prevState.showInfo
+        }))
+    }
+
+    render() {
+        const backgroundStyle = {
+            backgroundImage: `url(${BackgroundImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+        }
+
+        return (
+            <div className={classes.Login} style={backgroundStyle}>
+                <Backdrop show={this.state.showInfo} click={this.modalToggleHandler}/>
+                <div className={classes.LoginContent}>
+                    <div className={classes.MessageBox}>
+                        <h1> {textContent.login.title} </h1>
+                        <p className={classes.InfoBoxParagraph}> {textContent.login.paragraph} </p>
+                    </div>
+                    <div className={classes.ButtonGroup}>
+                        <div className={classes.LoginButtonGroup}>
+                            <button onClick={this.login.bind(this, 'agent')}>{textContent.login.loginButton}</button>
+                            <Info show={this.state.showInfo} click={this.modalToggleHandler} page="Login"></Info>
+                        </div>
+                        <a className={classes.GithubLink} href={textContent.links.github} target='_blank' rel="noopener noreferrer">
+                            {textContent.login.GitHub} <img src={LinkImage} alt="Github Icon"></img></a>
+                    </div>
+                    
+                </div>
+                <SandboxBanner />
+                <Footer />
+            </div>
+        )
+    }
+    
+    /*
+        Click handler for the agent and broker login buttons.
+
+    */
+    login = async (role) => {
+        try {
+            //get the jwt stored in session cookie
+            let loginReq = await axios.get('/auth/login');
+
+            //if status is 210, redirect the user to the constent page
+            if(loginReq.status === 210) {
+                window.location = loginReq.data;
+            }
+            //get officeId from local storage and send it to the server to be added to the session cookie, 
+            //if there are none get a officeId from the server and have the server add it to the session cookie
+            var ls = new SecureLS({encodingType: 'aes', encryptionSecret: process.env.REACT_APP_SECRET});
+            let officeId = ls.get('officeId');
+
+            //officeId was not in localstorage, so get a new one from the server
+            if(officeId === '') {
+                let response = await axios.get('/office');
+                ls.set('officeId', response.data.officeId);
+                officeId = ls.get('officeId');
+            } 
+            //officeId was in the localstorage, send it to the server to get added to the session 
+            else {
+                let office = {officeId: officeId};
+                await axios.post('/office', office, {withCredentials: true});
+            }
+            //switch the role
+            this.props.roleChange(role);
+            //reder the leads page
+            this.props.click();
+
+        } catch (error) {
+            console.log("Login error: ");
+            console.log(error);
+        }
+    }
+}
+
+
+export default Login;

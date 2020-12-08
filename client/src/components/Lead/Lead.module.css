@@ -1,0 +1,127 @@
+.Lead {
+    display: flex;
+    font-family: Helvetica, sans-serif;
+    width: 100%;
+    max-width: 1024px;
+    height: 140px;
+    box-sizing: border-box;
+    flex-flow: row;
+    justify-content: space-between;
+    text-align: left;
+    padding: 0 30px 0 20px;
+    color: black;
+    margin-bottom: 15px;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.15);
+}
+
+.LeadBoxLeft  {
+    padding-top: 25px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+}
+
+.LeadBoxRight {
+    padding-top: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+}
+
+
+#Name {
+    margin: 0 0 20px 0;
+    padding-top: 0;
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 0;
+    line-height: 25px;
+}
+
+.ContactInfo {
+    margin: 0;
+    display: flex;
+}
+
+.ContactTitle {
+    margin: 0 0 5px 0;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 18px;
+}
+.Contact:first-child {
+    margin-right: 40px;
+}
+
+.ContactInfo {
+    margin: 0;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 18px;
+}
+
+.ButtonGroup {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ButtonGroup button {
+    margin: 0 0 16px 20px;
+    width: 192px;
+    height: 50px;
+    font-size: var(--button-font-size);
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 23px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+
+.CreateButton {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.ViewButton {
+    background-color: white;
+    color: var(--primar-color);
+    margin-right: 30px;
+}
+
+
+.MoreInfo {
+    width: 77px;
+    margin: 0 0 15px calc(100% - 77px);
+}
+
+
+/* @media (min-width: 701px) {
+    .Lead button {
+        font-size: 1.3rem;
+        display: block;
+        width: 200px;
+        margin-top: 10px;
+    }
+
+    .LeadBox h1{
+        font-size: 2rem;
+    }
+    
+    .LeadBox h3 {
+        font-size: 1rem
+    }
+
+    .Lead {
+        height: 150px;
+    }
+} */

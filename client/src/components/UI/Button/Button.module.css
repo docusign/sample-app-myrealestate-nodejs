@@ -1,0 +1,20 @@
+
+
+.Button {
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+    font-size: var(--small-font-size);
+    height: 50px;
+    width: 168px;
+    border: 1px solid #979797;
+    border-radius: 5px;
+    color: white;
+    font-size: var(--small-font-size);
+    background-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.Button:disabled {
+    cursor: not-allowed;
+}
+

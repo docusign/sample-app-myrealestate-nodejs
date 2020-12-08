@@ -1,0 +1,49 @@
+.Input {
+    box-sizing: border-box;
+    padding: 10px 15px;
+}
+
+.HalfInput {
+    box-sizing: border-box;
+    margin: 10px 15px;
+    width: 41%;
+    max-width: 339px !important;
+    display: inline-block;
+}
+
+.Input input[type=text] {
+    box-sizing: border-box;
+    height: 40px !important;
+    max-width: 339px !important;
+    width: 100%;
+    outline: none;
+    border: 1px solid #868686;    
+    background-color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 20px;
+}
+
+
+.HalfInput select, .Input select {
+    max-width: 339px !important;
+    height: 40px !important;
+    width: 100% !important;
+    display: inline-block;
+}
+
+.Label {
+    display: block;
+    color: #50565C;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 20px;
+}
+
+.Error {
+    margin: 0;
+    color: red !important;
+}

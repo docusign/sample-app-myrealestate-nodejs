@@ -1,0 +1,25 @@
+.Info {
+    padding-top: 10px;
+    padding-left: 5px;
+    box-sizing: border-box;
+    max-height: calc(100vh - 300px);
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow-y: scroll;
+    border: 2px solid darkcyan;
+}
+
+.Info p {
+    display: block;
+    margin: 10px 0;
+}
+.Column {
+    margin-top: 15px;
+    width: 49%;
+}
+
+.Column p {
+    margin-left: 10px;
+}
