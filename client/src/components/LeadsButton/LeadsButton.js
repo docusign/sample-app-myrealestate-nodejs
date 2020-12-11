@@ -5,7 +5,7 @@ import classes from './LeadsButton.module.css'
 
 /*
     This component is used to generate random leads or delete
-    leads in an implementation that stores the leads on the backend
+    leads in an implementation that stores the leads on the back end
 */
 
 const leadsButton = (props) => {

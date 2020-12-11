@@ -17,7 +17,7 @@ import classes from './RoomPropertyInfoForm.module.css';
 
 let getFormData = (props) => {
     return {
-        //forum inputs displayed in the moda'
+        // Forum inputs displayed in the modal
         
         lotSizeSquareFeet: {
             inputType: "input",
@@ -133,7 +133,7 @@ let getFormData = (props) => {
 
 class PropertyInfoForm extends Component {
     state = {
-        formValidated: true, //form is not validated by default
+        formValidated: true, // Form is not validated by default
         formData: getFormData(this.props),
     }
 
@@ -148,19 +148,19 @@ class PropertyInfoForm extends Component {
         Form submission Handler obtains data from that state and sends it
         to the backend. Once the RoomID of the created room is received,
         it sets the state of the Layout container to Room and selectedRoom
-        to the id.
+        to the ID.
     */
     formSubmissionHandler = async (event) => {
 
-        //prevent page refresh
+        // Prevent page refresh
         event.preventDefault();
 
-        //build the room data from the state
+        // Build the room data from the state
         let fieldData = {};
         for(const inputField in this.state.formData) {
-            //skip empty string values
+            // Skip empty string values
             if(this.state.formData[inputField].value !== '') {
-                //converts strings to ints for required fields
+                // Converts strings to ints for required fields
                 if(this.state.formData[inputField].validation.isNumeric) {
                     fieldData[inputField] = parseInt(this.state.formData[inputField].value, 10)
                 }
@@ -169,7 +169,7 @@ class PropertyInfoForm extends Component {
         }
         try{
             await axios.patch(`/rooms/${this.props.roomId}`, fieldData, {withCredentials: true});
-            //update parent state with new info and 
+            // Update parent state with new info 
             const updatedFieldData = {...this.props.fieldData };
             for(const key in fieldData) {
                 updatedFieldData[key] = fieldData[key]

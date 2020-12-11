@@ -25,7 +25,7 @@ const navigationItem = (props) => {
             icon = null;
     }
 
-    //get the styling
+    // Get the styling
     let classNames = [];
     classNames.push(classes.NavigationItem);
     if(props.active) classNames.push(classes.Active);

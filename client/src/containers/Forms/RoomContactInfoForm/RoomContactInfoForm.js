@@ -328,18 +328,18 @@ class RoomContactInfoForm extends Component {
         const updatedInput = {
             ...updatedFormGroup[inputKey]
         }
-        //set the new value
+        // Set the new value
         updatedInput.value = event.target.value;
-        //check if the new value is valid and set it
-        //force set '' before validation
+        // Check if the new value is valid and set it
+        // Force set '' before validation
         updatedInput.valid = 
             this.validateInput(updatedInput.value, updatedInput.validation);
-        //set this input element as touched
+        // Set this input element as touched
         updatedInput.touched = true;
         updatedFormGroup[inputKey] = updatedInput;
         updatedFormData[inputGroupKey] = updatedFormGroup;
 
-        //update whether or not the entire form is valid
+        // Update whether or not the entire form is valid
         let formIsValid = true;
         for(let inputGroupKey in this.state.formData) {
             for(let inputKey in this.state.formData[inputGroupKey]) {
@@ -347,7 +347,7 @@ class RoomContactInfoForm extends Component {
             } 
         }
 
-        //update the form's state
+        // Update the form's state
         this.setState((prevState, props) => ({
             formValidated: formIsValid, 
             formData: updatedFormData
@@ -356,12 +356,12 @@ class RoomContactInfoForm extends Component {
 
     subHandler = async (event) => {
         event.preventDefault();
-        //build the room data from the state
+        // Build the room data from the state
         let fieldData = {};
         for(let inputGroupKey in this.state.formData) {
             const contact = {};
             for(let inputKey in this.state.formData[inputGroupKey]) {
-                //skip empty string values
+                // Skip empty string values
                 contact[inputKey] =this.state.formData[inputGroupKey][inputKey].value;       
             } 
             fieldData[inputGroupKey] = contact;
@@ -369,7 +369,7 @@ class RoomContactInfoForm extends Component {
         console.log(fieldData);
         try{
             await axios.patch(`/rooms/${this.props.roomId}`, fieldData, {withCredentials: true});
-            //update parent state with new info and 
+            // Update parent state with new info 
             const updatedFieldData = {...this.props.fieldData };
             for(const key in fieldData) {
                 updatedFieldData[key] = fieldData[key]

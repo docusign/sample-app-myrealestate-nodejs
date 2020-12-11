@@ -29,7 +29,7 @@ const navBar = ( props ) => {
             </div>
 
             <div className={ classes.UserProfile } >
-                {/* //User Icon can be used in the instance of implementing custom user logins */}
+                {/* // User Icon can be used in the instance of implementing custom user logins */}
                 {/* <FontAwesomeIcon icon={faUserCircle} className={ classes.Profile }  size="3x" /> */}
             </div>
         </div>
