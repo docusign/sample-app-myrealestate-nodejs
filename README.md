@@ -212,4 +212,24 @@ The **Rooms** page simply returns all of a user&#39;s rooms to them. In the case
 ````
 ## Room Page
 
+The **Room** page allows the user to modify the information about a specific room [UpdateRoomFieldData API](https://developers.docusign.com/docs/rooms-api/reference/rooms/rooms/updateroomfielddata) endpoint as shown below.
+```javascript
+    let newfieldData = {
+      "data": {
+        "taxAnnualAmount": 3389.12,
+        "buyer1": {
+        "name": "Elizabeth Bennet"
+      }
+    }
+    let optsOrCallback = {body: newFieldData}
+    roomsApi.updateRoomFieldData(accountId, roomId, optsOrCallback)
+        .then(function (newFieldData) {    
+            res.status(200).json(newFieldData)     
+        })
+      .catch(function (error) {
+        if (error) {
+            res.status(error.status).send(error.message);
+        }
+      }); 
+````
 ## Licenses
