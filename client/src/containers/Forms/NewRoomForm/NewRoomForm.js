@@ -121,7 +121,7 @@ const getStateOptions = () => {
 
 let getFormData = () => {
     return {
-        //forum inputs displayed in the modal
+        // Forum inputs displayed in the modal
         name: {
             inputType: "input",
             inputConfig: {
@@ -245,48 +245,48 @@ class NewRoomForm extends Component {
 
     /*
         Form submission Handler obtains data from that state and sends it
-        to the backend. Once the RoomID of the created room is received,
+        to the back end. Once the RoomID of the created room is received,
         it sets the state of the Layout container to Room and selectedRoom
-        to the id.
+        to the ID.
     */
     formSubmissionHandler = (event) => {
-        //prevent page refresh
+        // Prevent page refresh
         event.preventDefault();
 
-        //build the room data from the state
+        // Build the room data from the state
         let roomData = {};
 
-        //set contact info as either buyer1 or seller1
+        // Set contact info as either buyer1 or seller1
         const contact = {};
         contact.email = this.props.lead.email;
         contact.cellPhone = this.props.lead.phoneNumber;
         contact.name = this.props.lead.firstName + ' ' + this.props.lead.lastName;
         roomData.contactInfo = contact;
 
-        //room info
+        // Room info
         roomData.name = this.state.formData.name.value;
         roomData.side = (this.state.formData.side.value === 'buyer') ? 'buy' : 'sell';
 
-        //location
+        // Location
         roomData.address1 = this.state.formData.address.value;
         roomData.city = this.state.formData.city.value;
-        //country and state info sent here in form "CountryCode-StateCode"
-        //such as "US-WA" for Washington, United States
+        // Country and state info sent here in form "CountryCode-StateCode"
+        // Such as "US-WA" for Washington, United States
         roomData.state = this.state.formData.state.value;
         roomData.postalCode = this.state.formData.zipcode.value;
 
 
-        //we need to return the room id of the room that was added so that it can be added to the contact
+        // We need to return the room ID of the room that was added so that it can be added to the contact
         axios.post('/rooms', roomData, {withCredentials: true})
         .then(room => {
-            //success the room was created, now add its id to the contact in local storage
+            // Success: the room was created; now add its ID to the contact in local storage
             var ls = new SecureLS({encodingType: 'aes', encryptionSecret: process.env.REACT_APP_SECRET});
-            //get leads from local storage
+            // Get leads from local storage
             let leads = ls.get('leads');
-            //add the new Room to the selected lead and save leads back to local storage
+            // Add the new Room to the selected lead and save leads back to local storage
             leads[this.props.index].room = room.data;
             ls.set('leads', leads);
-            //render the Room page of the newly created room
+            // Render the Room page of the newly created room
            this.props.renderSelectedRoom(room.data);
         })
         .catch(error => {

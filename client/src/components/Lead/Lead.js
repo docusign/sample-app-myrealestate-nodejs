@@ -28,7 +28,7 @@ import classes from './Lead.module.css';
 
 
 const lead = ({room, firstName, lastName, phoneNumber, email, click, showInfo, infoToggle, renderLastCreatedRoom}) => {
-    //if the lead has not been used to create a transaction yet, add a unclickable curson to the View Room Button
+    // If the lead has not been used to create a transaction yet, add a unclickable cursor to the View Room Button
     const buttonStyle = (room) ? null : {cursor:  'not-allowed', color: 'lightgrey'};
 
     return (

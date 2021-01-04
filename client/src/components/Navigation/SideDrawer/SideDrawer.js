@@ -14,7 +14,7 @@ import classes from './SideDrawer.module.css';
     author: David Kennedy
 */
 const sideDrawer = (props) => {
-    //hide the sideDrawer if it is not suppossed to be shown
+    // Hide the sideDrawer if it is not suppossed to be shown
     let displayStyle = {}; 
     if(props.show !== null) {
         if(props.show){

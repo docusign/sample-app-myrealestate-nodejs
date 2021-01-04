@@ -1,25 +1,25 @@
 {
     "login": {
         "title": "Welcome to the MyRealEstate Sample Application",
-        "paragraph": "This app was designed to showcase the potential integration of the Docusign Rooms API into a RealEstate CRM. This application is open sourced and all of the code is located in our GitHub repository.",
+        "paragraph": "This app was designed to showcase the potential integration of the Docusign Rooms API into a RealEstate CRM. This application is open-source and all of the code is located in our GitHub repository.",
         "loginButton": "Try the App",
         "GitHub": "Go to GitHub",
         "info": {
             "title": "Login info",
-            "paragraph1": "The action demostrates the login feature:",
-            "listItem1": "Obtain a jwt (Java web token) for use in future API calls",
-            "listItem2": "Obtain the DocuSign Rooms account info necessary for furutre API calls",
+            "paragraph1": "The action demonstrates the login feature:",
+            "listItem1": "Obtain a JWT (Java Web Token) for use in future API calls",
+            "listItem2": "Obtain the DocuSign Rooms account info necessary for future API calls",
             "listItem3Part1": "(optional) Adds the user to a unique ",
             "listItem3Part2": "office",
             "codeflow": "Code flow",
             "step1": "Step 1:",
-            "step1info1": "Obtain the jwt",
+            "step1info1": "Obtain the JWT",
             "step1info2": "with the correct permissions required by the application. This application employs rooms read and write permissions along with company read and write permissions",
             "step2": "Step 2:",
             "step2info1": "Obtain the user's Room userId information using the Rooms",
             "step2info2": "UsersGetUsers",
             "step3": "Step 3:",
-            "step3info1": "This application has every user logged in to the same account in order to simplify the sample application. In order to do so every user is assigned a unique officeId which is stored in local storage. If the user has not logged in before or has cleared his/her local storage, a new office is created using the method",
+            "step3info1": "This application has every user logged in to the same account in order to simplify the sample application. In order to do so, every user is assigned a unique officeId which is stored in local storage. If the user has not logged in before or has cleared his/her local storage, a new office is created using the method",
             "step3info2": "Offices:CreateOffice",
             "step3info3": "and the user is added to this office using the method",
             "step3info4": "Users:AddUserToOffice",
@@ -28,7 +28,7 @@
     },
     "sandboxbanner": {
         "title": "DocuSign: It's time to agree better",
-        "paragraph": "DocuSign helps organizations connect and automate how they prepare, sign, act on and manage agreements.",
+        "paragraph": "DocuSign helps organizations connect and automate how they prepare, sign, act on, and manage agreements.",
         "createbutton": "Create Demo Account",
         "learnmore": "Learn More"
     },
@@ -53,7 +53,7 @@
         "title": "Leads",
         "info": {
             "title": "Create Room Info",
-            "paragraph1": "The create transaction button demostrates how to create a Room using the DocuSign Rooms API",
+            "paragraph1": "The create transaction button demonstrates how to create a Room using the DocuSign Rooms API",
             "listItem1part1": "Obtain the user's data for the new",
             "listItem1part2": "Room",
             "listItem2": "Create the new Room",
@@ -61,11 +61,11 @@
             "listItem3Part2": "office",
             "codeflow": "Code flow",
             "step1": "Step 1:",
-            "step1info": "Once clicked, the create transaction button packages the lead information along with the user input form information together into a Room object to send to the API endpoint",
+            "step1info": "Once clicked, the Create transaction button packages the lead information along with the user input form information together into a Room object to send to the API endpoint",
             "step2": "Step 2:",
             "step2info1": "The room is then created via the ",
             "step2info2": "Rooms:CreateRoom",
-            "step2info3": "API endpoint"
+            "step2info3": "API endpoint."
         }
     },
     "lead": {
@@ -79,7 +79,7 @@
         "date":  "Date Modifed:",
         "info": {
             "title": "Get Rooms Info",
-            "paragraph1": "This page demostrates how to get all the rooms associated with an office as well as how to get all the field info of a specific Room.",
+            "paragraph1": "This page demonstrates how to get all the rooms associated with an office as well as how to get all the field info of a specific room.",
             "listItem1part1": "Get all of the",
             "listItem1part2": "rooms",
             "listItem1part3": "associated with the user's",
@@ -107,9 +107,9 @@
         "created": "Created:",
         "info": {
             "title": "Get/Edit Room Info",
-            "paragraph1": "This page demostrates how to get the field data for a Room and how to modify this data via the Rooms API.",
-            "listItem1": "Get the data for a room using it's roomId (an integer number unique to each room)",
-            "listItem2": "Update any of the field data for that Room",
+            "paragraph1": "This page demonstrates how to get the field data for a Room and how to modify this data via the Rooms API.",
+            "listItem1": "Get the data for a room using its roomId (an integer number unique to each room).",
+            "listItem2": "Update any of the field data for that Room.",
             "codeflow": "Code flow",
             "step1": "Step 1:",
             "step1info1": "The field data for a specific room can be obtained via the",
@@ -118,7 +118,7 @@
             "step2": "Step 2:",
             "step2info1": "The field data for a room",
             "step2info2": "Rooms:UpdateRoomFieldData",
-            "step2info3": "Api endpoint"
+            "step2info3": "API endpoint"
         }
     },
     "newRoomForm": {
@@ -160,7 +160,7 @@
         "postalCode": "Postal Code:",
         "addressCntd": "Address cntd:",
         "price": "List Price:",
-        "contract": "Under Conttractr:"
+        "contract": "Under Contract:"
     },
     "contactInfoForm": {
         "buyer1": "Buyer 1",

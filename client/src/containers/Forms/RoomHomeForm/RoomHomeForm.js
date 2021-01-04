@@ -121,7 +121,7 @@ const getStateOptions = () => {
 
 let getFormData = (props) => {
     return {
-        //forum inputs displayed in the moda'
+        // Forum inputs displayed in the modal
         address1: {
             inputType: "input",
             inputConfig: {
@@ -247,7 +247,7 @@ let getFormData = (props) => {
 
 class RoomHomeForm extends Component {
     state = {
-        formValidated: true, //form is not validated by default
+        formValidated: true, // Form is not validated by default
         formData: getFormData(this.props),
     }
 
@@ -262,26 +262,26 @@ class RoomHomeForm extends Component {
         Form submission Handler obtains data from that state and sends it
         to the backend. Once the RoomID of the created room is received,
         it sets the state of the Layout container to Room and selectedRoom
-        to the id.
+        to the ID.
     */
     formSubmissionHandler = async (event) => {
 
-        //prevent page refresh
+        // Prevent page refresh
         event.preventDefault();
 
-        //build the room data from the state
+        // Build the room data from the state
         let fieldData = {};
         for(const inputField in this.state.formData) {
             // this.state.formData[fieldData][inputField.inputConfig.id] = inputField.value;
             if(inputField === 'country') continue;
-            //convert amount to a number
+            // Convert amount to a number
             if(inputField === 'currentListingAmount') fieldData[this.state.formData[inputField].inputConfig.id] = parseInt(this.state.formData[inputField].value, 10);
             else fieldData[this.state.formData[inputField].inputConfig.id] = this.state.formData[inputField].value;
         }
 
         try{
             await axios.patch(`/rooms/${this.props.roomId}`, fieldData, {withCredentials: true});
-            //update parent state with new info and 
+            // Update parent state with new info 
             const updatedFieldData = {...this.props.fieldData };
             for(const key in fieldData) {
                 updatedFieldData[key] = fieldData[key]

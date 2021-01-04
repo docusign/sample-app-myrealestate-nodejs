@@ -90,9 +90,9 @@ class NewContactForm extends Component {
 
     /*
         Form submission Handler obtains data from that state and sends it
-        to the backend. Once the RoomID of the created room is received,
+        to the back end. Once the RoomID of the created room is received,
         it sets the state of the Layout container to Room and selectedRoom
-        to the id.
+        to the ID.
     */
     formSubmissionHandler = (event) => {
         event.preventDefault();
