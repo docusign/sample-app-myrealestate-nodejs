@@ -19,14 +19,8 @@ const oAuthBasePath = oAuth.BasePath.DEMO;
  * a new accessToken will be obtained from DocuSign.
  */
 module.exports.updateToken = async (req) => {
-    let rsaKey = null;
-    if(process.env.NODE_ENV === 'production') {
-        console.log("We are in production");
-        rsaKey = process.env.RSA_KEY;
-    } else {
-        console.log("Getting RSA key, we are not in production");
-        rsaKey = fs.readFileSync(process.env.PRIVATE_KEY_LOCATION);
-    }
+    let rsaKey = fs.readFileSync(process.env.PRIVATE_KEY_LOCATION);
+    
     const jwtLifeSec = 60 * 60; // requested lifetime for the JWT is 60 min
     //declare the scopes 
     const scopes = [
@@ -63,12 +57,8 @@ module.exports.updateToken = async (req) => {
  * with it's expiration in the req.session
  */
 const getToken = async (req) => {
-    let rsaKey = null;
-    if(process.env.NODE_ENV === 'production') {
-        rsaKey = process.env.RSA_KEY;
-    } else {
-        rsaKey = fs.readFileSync(process.env.PRIVATE_KEY_LOCATION);
-    }
+    let rsaKey = fs.readFileSync(process.env.PRIVATE_KEY_LOCATION);
+    
     const jwtLifeSec = 60 * 60; // requested lifetime for the JWT is 60 min
     //declare the scopes 
     const scopes = [
