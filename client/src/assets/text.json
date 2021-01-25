@@ -7,7 +7,7 @@
         "info": {
             "title": "Login info",
             "paragraph1": "The action demonstrates the login feature:",
-            "listItem1": "Obtain a JWT (Java Web Token) for use in future API calls",
+            "listItem1": "Obtain a JWT (JSON Web Token) for use in future API calls",
             "listItem2": "Obtain the DocuSign Rooms account info necessary for future API calls",
             "listItem3Part1": "(optional) Adds the user to a unique ",
             "listItem3Part2": "office",
@@ -33,7 +33,7 @@
         "learnmore": "Learn More"
     },
     "footer": {
-        "message": "2020 DocuSign Inc."
+        "message": "2021 DocuSign Inc."
     },
     "toolbar": {
         "title": "My Real Estate",
@@ -173,7 +173,7 @@
 
     },
     "links" : {
-        "github": "https://github.docusignhq.com/DPE/rooms-sample-app",
+        "github": "https://github.com/docusign/sample-app-myrealestate-nodejs",
         "createsandbox": "https://go.docusign.com/o/sandbox/",
         "devcenter": "https://developers.docusign.com/"
     }
