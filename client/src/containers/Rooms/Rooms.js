@@ -33,14 +33,14 @@ class Rooms extends Component {
     }
     
     render() {
-        let rooms;
+        let rooms = null;
         if(!this.state.loaded) {
             rooms = (
                 <div className={classes.Rooms}>
                     <Spinner component="Rooms"/>
                 </div>   
             )
-        } else {
+        } else if (this.state.rooms) {
             rooms = this.state.rooms.map((room, index) => {
                 return (
                     <Room room={this.state.rooms[index]} key={index} click={this.props.click.bind(this, this.state.rooms[index])}/>
