@@ -23,6 +23,8 @@ client/node_modules
 .env.development.local
 .env.test.local
 .env.production.local
+client/.eslintcache
+.gitignore.swp
 /CredsProd
 /CredsDev
 
