@@ -78,6 +78,7 @@ let getFormData = () => {
 class NewContactForm extends Component {
     state = {
         formValidated: false, //form is not validated by default
+        submitted: false,
         formData: getFormData(),
     }
 
@@ -101,7 +102,7 @@ class NewContactForm extends Component {
         newLead.lastName = this.state.formData.lastName.value;
         newLead.email = this.state.formData.email.value;
         newLead.phoneNumber = this.state.formData.phoneNumber.value;
-        this.setState({formData: getFormData()});
+        this.setState({formData: getFormData(), submitted: true});
         this.props.sub(newLead);
     }
 
@@ -112,7 +113,8 @@ class NewContactForm extends Component {
                 formValidated={this.state.formValidated}
                 formTitle='Create a Lead:'
                 update={this.updateState}
-                formData={this.state.formData} />
+                formData={this.state.formData} 
+                buttonDisabled={this.state.submitted}/>
         )
     }
 }

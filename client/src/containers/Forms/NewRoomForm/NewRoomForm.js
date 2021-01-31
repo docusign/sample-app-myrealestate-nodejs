@@ -233,6 +233,7 @@ let getFormData = () => {
 class NewRoomForm extends Component {
     state = {
         formValidated: false, //form is not validated by default
+        submitted: false,
         formData: getFormData(),
     }
 
@@ -252,6 +253,11 @@ class NewRoomForm extends Component {
     formSubmissionHandler = (event) => {
         // Prevent page refresh
         event.preventDefault();
+
+        //disable submit button
+        this.setState({
+            submitted: true
+        });
 
         // Build the room data from the state
         let roomData = {};
@@ -303,7 +309,8 @@ class NewRoomForm extends Component {
                 formTitle={(this.props.lead !== null) ? "Create a New Transaction" : null }
                 subTitle={(this.props.lead !== null) ? "For : " + this.props.lead.firstName + " " + this.props.lead.lastName : null}
                 update={this.updateState}
-                formData={this.state.formData} />
+                formData={this.state.formData} 
+                buttonDisabled={this.state.submitted}/>
         )
     }
 }
