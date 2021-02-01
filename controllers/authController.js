@@ -160,14 +160,12 @@ const addNewOfficeToSessionIfMissing = async (req) => {
                     }
                     continue;
                 }
-                //different error, send it
-                console.log(error);
-                res.status(error.status).send(error.response.body.message);
+                //different error, throw it
+                throw error;
             }
         }  
-        //success, add the office to the session and send the office Id    
+        //success, add the office to the session
         req.session.officeId = officeId;
-        res.status(200).json({officeId: officeId});
     }
 
 
@@ -191,7 +189,8 @@ module.exports.login = async (req, res, next) => {
         await getUserInfo(req);
         //if the user does not have an officeID already, create one and add it to the session
         await addNewOfficeToSessionIfMissing(req);
-     
+        //success
+        res.status(200).send('Success');
     } catch (error) {
         //if consent is required, send the redirect URL to the user;
         if(error.message === 'Consent required') {
@@ -205,8 +204,6 @@ module.exports.login = async (req, res, next) => {
         console.log(error);
         res.status(error.status).send(error.message);
     }
-    //success
-    res.status(200).send('Success');
 }
 
 /**
