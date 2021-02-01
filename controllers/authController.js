@@ -121,7 +121,55 @@ const getUserInfo = async (req) => {
     }
     //add userInfo to the session
     req.session.accountId = accountInfo.accountId;
-}
+};
+
+const addNewOfficeToSessionIfMissing = async (req) => {
+        //If the user already has an officeID return
+        if(req.session.officeId) return;
+
+        //set up the apiClient  
+        var roomsNodeSDK = new RoomsNodeSDK.ApiClient({
+            basePath: basePath,
+            oAuthBasePath: oAuthBasePath
+        });
+        roomsNodeSDK.addDefaultHeader('Authorization', 'Bearer ' + req.session.token); 
+        
+        //set up the officeApi
+        var officeApi = new RoomsNodeSDK.OfficesApi(roomsNodeSDK);
+    
+        //Generate an office, it gets 5 tries to do so as office names must be unique
+        let newOffice = {};
+        let tries = 0;
+        let officeId;
+        //think about this :)
+        while(tries++ < 5) {
+            //generate a random office name
+            newOffice.name = crypto.randomBytes(20).toString('hex');
+            try {
+                let response = await officeApi.createOffice(newOffice, process.env.API_ACCOUNT_ID);
+                officeId = response.officeId;
+                break;
+            } catch(error) {
+                //continue if it is a name already exists error
+                let sameNameErrorMessage = 
+                    'The office \'' + newOffice.name + '\' already exists. Please choose a different name.';
+                if(error.response.body.message !== sameNameErrorMessage) {
+                    //send the error if you are out of tries
+                    if(tries === 5) {
+                        throw error;
+                    }
+                    continue;
+                }
+                //different error, send it
+                console.log(error);
+                res.status(error.status).send(error.response.body.message);
+            }
+        }  
+        //success, add the office to the session and send the office Id    
+        req.session.officeId = officeId;
+        res.status(200).json({officeId: officeId});
+    }
+
 
 
 
@@ -141,6 +189,9 @@ module.exports.login = async (req, res, next) => {
         await getToken(req);
         //get the user info and add it to the session
         await getUserInfo(req);
+        //if the user does not have an officeID already, create one and add it to the session
+        await addNewOfficeToSessionIfMissing(req);
+     
     } catch (error) {
         //if consent is required, send the redirect URL to the user;
         if(error.message === 'Consent required') {
