@@ -135,6 +135,7 @@ class PropertyInfoForm extends Component {
     state = {
         formValidated: true, // Form is not validated by default
         formData: getFormData(this.props),
+        submitted: false
     }
 
     /*
@@ -154,6 +155,9 @@ class PropertyInfoForm extends Component {
 
         // Prevent page refresh
         event.preventDefault();
+
+        //disable submit button
+        this.setState({submitted: false});
 
         // Build the room data from the state
         let fieldData = {};
@@ -190,7 +194,8 @@ class PropertyInfoForm extends Component {
                 formValidated={this.state.formValidated}
                 update={this.updateState}
                 format='twoColumns'
-                formData={this.state.formData} />
+                formData={this.state.formData} 
+                buttonDisabled={this.state.submitted}/>
             </div>
         )
     }
