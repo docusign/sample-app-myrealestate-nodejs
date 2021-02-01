@@ -57,7 +57,7 @@ const form = (props) => {
     (
         <React.Fragment>
             <div className={classes.Line}></div>
-            <button type="submit" disabled={!props.formValidated}>Submit</button>
+            <button type="submit" disabled={!props.formValidated || props.buttonDisabled}>Submit</button>
         </React.Fragment>
     ) : 
     (
