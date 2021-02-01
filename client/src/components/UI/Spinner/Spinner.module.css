@@ -1,7 +1,18 @@
 .container {
     text-align: center;
+    text-emphasis: bold !important;
     width: 100%;
     margin: 10px;
+}
+
+.container h3 {
+  text-emphasis: bold;
+  font-size: large;
+}
+
+#SpinnerLabel {
+  text-emphasis: bold !important;
+  font-size: large;
 }
 
 .spinner {
