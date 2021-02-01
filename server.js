@@ -16,7 +16,6 @@ const {updateToken} = require('./controllers/authController');
 const leadRouter = require('./routes/leadRouter');
 const authRouter = require('./routes/authRouter');
 const roomsRouter = require('./routes/roomsRouter');
-const officeRouter = require('./routes/officeRouter');
 
 const port =  process.env.PORT || 5000;
 const maxSessionMinutes = 180;
@@ -29,7 +28,7 @@ const app = express()
   .use(cookieParser())
   .use(cookieSession({
     name: 'roomApp',
-    maxAge: 1000*60*60*24, //24 hours
+    maxAge: 1000*60*60*24*30, //1 month cookie
     keys: [process.env.SESSION_SECRET],
     httpOnly: true,
     signed: true,
@@ -58,7 +57,7 @@ const app = express()
 app.use('/leads', leadRouter);
 app.use('/auth', authRouter);
 app.use('/rooms', roomsRouter);
-app.use('/office', officeRouter);
+
 console.log("Node env: " + process.env.NODE_ENV);
 //serve static assets if in production
 if(process.env.NODE_ENV === 'production') {
