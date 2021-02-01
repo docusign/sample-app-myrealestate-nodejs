@@ -8,6 +8,7 @@ import RoomContactInfoForm from '../Forms/RoomContactInfoForm/RoomContactInfoFor
 import RoomHomeForm from '../Forms/RoomHomeForm/RoomHomeForm';
 import RoomPropertyInfoForm from '../Forms/RoomPropertyInfoForm/RoomPropertyInfoForm';
 import textContent from '../../assets/text.json';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 
 import classes from './Room.module.css'
@@ -105,6 +106,9 @@ class Room extends Component {
             displayContent = this.getViewableContent();
         }
         var {name, roomId, createdDate} = this.state.currentRoomData;
+
+        //load a spinner if the field data has not loaded yet
+        let room = this.state.fieldData ? displayContent: <Spinner component="Transaction:"/>;
         return (
             <div className={classes.Room}>
                 <div className={classes.RoomContent}>
@@ -114,10 +118,12 @@ class Room extends Component {
                         <h1 className={classes.Title}>{textContent.room.transaction} {name}</h1>
                         {editButtons}
                     </div>
-                    <h3>{textContent.room.id} {roomId}</h3>
-                    <h3>{textContent.room.created} {new Date(createdDate).toLocaleDateString("en-US")}</h3>
+                    <div className={classes.SubInfo}>
+                        <h3>{textContent.room.id} {roomId}</h3>
+                        <h3>{textContent.room.created} {new Date(createdDate).toLocaleDateString("en-US")}</h3>
+                    </div>
                     <div className={classes.DispalyContent}>
-                        {displayContent}     
+                        {room}     
                     </div>     
                 </div>
             </div>

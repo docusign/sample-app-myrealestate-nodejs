@@ -13,12 +13,11 @@
     padding-bottom: 0;
 }
 
-.Room h3 {
+.SubInfo h3 {
     font-weight: normal;
     margin: 0;
     padding: 0;
 }
-
 .RoomContent {
     max-width: 1000px;
 }

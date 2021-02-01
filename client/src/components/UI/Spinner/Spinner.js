@@ -5,7 +5,7 @@ import classes from './Spinner.module.css';
 /*
     Custom spinner component 
     props:
-        component: (String) the name of the component being loaded
+        component: (String) the name of the component being loaded. String appears above the Spinner
 */
 const spinner = ( props ) => {
     return (
