@@ -10,7 +10,7 @@ import classes from './Spinner.module.css';
 const spinner = ( props ) => {
     return (
         <div className={classes.container}>
-            <h3 id={classes.SpinnerLabel}>Loading {props.component}</h3>
+            <h3>Loading {props.component}</h3>
             <div className={classes.spinner}></div>
         </div>
     )

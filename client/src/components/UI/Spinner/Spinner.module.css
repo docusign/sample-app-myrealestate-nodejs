@@ -7,12 +7,6 @@
 
 .container h3 {
   text-emphasis: bold;
-  font-size: large;
-}
-
-#SpinnerLabel {
-  text-emphasis: bold !important;
-  font-size: large;
 }
 
 .spinner {
