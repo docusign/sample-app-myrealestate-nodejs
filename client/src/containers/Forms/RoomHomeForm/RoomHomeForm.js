@@ -249,6 +249,7 @@ class RoomHomeForm extends Component {
     state = {
         formValidated: true, // Form is not validated by default
         formData: getFormData(this.props),
+        submitted: false
     }
 
     /*
@@ -268,6 +269,9 @@ class RoomHomeForm extends Component {
 
         // Prevent page refresh
         event.preventDefault();
+
+        //Disable submit button
+        this.setState({submitted: true})
 
         // Build the room data from the state
         let fieldData = {};
@@ -302,7 +306,8 @@ class RoomHomeForm extends Component {
                 formValidated={this.state.formValidated}
                 update={this.updateState}
                 format='twoColumns'
-                formData={this.state.formData} />
+                formData={this.state.formData} 
+                buttonDisabled={this.state.submitted}/>
             </div>
         )
     }
