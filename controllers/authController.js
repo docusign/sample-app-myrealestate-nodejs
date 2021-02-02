@@ -3,6 +3,7 @@
 require('dotenv').config();  //get access to environment variables
 const moment = require('moment'); //libarary used to set and determine a tokens expiration date
 const fs = require('fs');  //library used to parse the RSA key
+const crypto = require('crypto');
 const RoomsNodeSDK = require('docusign-rooms'); //Rooms API SDK
 const oAuth = RoomsNodeSDK.ApiClient.OAuth;
 const restApi = RoomsNodeSDK.ApiClient.RestApi;
