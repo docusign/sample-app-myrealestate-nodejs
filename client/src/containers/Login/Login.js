@@ -76,6 +76,22 @@ class Login extends Component {
             if(loginReq.status === 210) {
                 window.location = loginReq.data;
             }
+            //get officeId from local storage and send it to the server to be added to the session cookie, 
+            //if there are none get a officeId from the server and have the server add it to the session cookie
+            var ls = new SecureLS({encodingType: 'aes', encryptionSecret: process.env.REACT_APP_SECRET});
+            let officeId = ls.get('officeId');
+
+            //officeId was not in localstorage, so get a new one from the server
+            if(officeId === '') {
+                let response = await axios.get('/office');
+                ls.set('officeId', response.data.officeId);
+                officeId = ls.get('officeId');
+            } 
+            //officeId was in the localstorage, send it to the server to get added to the session 
+            else {
+                let office = {officeId: officeId};
+                await axios.post('/office', office, {withCredentials: true});
+            }
             //switch the role
             this.props.roleChange(role);
             //reder the leads page
