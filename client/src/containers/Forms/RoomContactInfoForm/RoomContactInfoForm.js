@@ -365,10 +365,7 @@ class RoomContactInfoForm extends Component {
     }
 
     componentDidUpdate = async () => {
-        console.log("Did update")
         if(this.state.submitted) {
-            console.log("Entered sub block");
-
             // Build the room data from the state
             let fieldData = {};
             for(let inputGroupKey in this.state.formData) {
