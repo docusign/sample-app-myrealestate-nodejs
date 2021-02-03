@@ -61,7 +61,7 @@ const form = (props) => {
         </React.Fragment>
     ) : 
     (
-        <button type="submit" disabled={!props.formValidated}>Submit</button>
+        <button type="submit" disabled={!props.formValidated || props.buttonDisabled}>Submit</button>
     )
     return (
         <form className={classes.Form} onSubmit={props.formSubmissionHandler}> 

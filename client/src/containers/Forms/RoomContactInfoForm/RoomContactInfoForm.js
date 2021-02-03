@@ -283,6 +283,7 @@ let getFormData = ({fieldData}) => {
 class RoomContactInfoForm extends Component {
     state = {
         formValidated: true, 
+        submitted: false,
         formData: getFormData(this.props),
     }
 
@@ -356,33 +357,40 @@ class RoomContactInfoForm extends Component {
 
     subHandler = async (event) => {
         event.preventDefault();
-        // Build the room data from the state
-        let fieldData = {};
-        for(let inputGroupKey in this.state.formData) {
-            const contact = {};
-            for(let inputKey in this.state.formData[inputGroupKey]) {
-                // Skip empty string values
-                contact[inputKey] =this.state.formData[inputGroupKey][inputKey].value;       
-            } 
-            fieldData[inputGroupKey] = contact;
-        }
-        console.log(fieldData);
-        try{
-            await axios.patch(`/rooms/${this.props.roomId}`, fieldData, {withCredentials: true});
-            // Update parent state with new info 
-            const updatedFieldData = {...this.props.fieldData };
-            for(const key in fieldData) {
-                updatedFieldData[key] = fieldData[key]
-            }
-            this.props.update(updatedFieldData);
-            
-        }
-        catch(error) {
-            console.log('Error updating field data');
-        }
+
+        //disable the submit button
+        this.setState({submitted: true});
+
+        //form submission in componentDidUpdate
     }
 
-
+    componentDidUpdate = async () => {
+        if(this.state.submitted) {
+            // Build the room data from the state
+            let fieldData = {};
+            for(let inputGroupKey in this.state.formData) {
+                const contact = {};
+                for(let inputKey in this.state.formData[inputGroupKey]) {
+                    // Skip empty string values
+                    contact[inputKey] =this.state.formData[inputGroupKey][inputKey].value;       
+                } 
+                fieldData[inputGroupKey] = contact;
+            }
+            console.log(fieldData);
+            try{
+                await axios.patch(`/rooms/${this.props.roomId}`, fieldData, {withCredentials: true});
+                // Update parent state with new info 
+                const updatedFieldData = {...this.props.fieldData };
+                for(const key in fieldData) {
+                    updatedFieldData[key] = fieldData[key]
+                }
+                this.props.update(updatedFieldData);      
+            }
+            catch(error) {
+                console.log('Error updating field data');
+            }
+        }
+    }    
     render() {
         let contactGroups = [];
         for(let inputGroupKey in this.state.formData) {
@@ -391,7 +399,7 @@ class RoomContactInfoForm extends Component {
         return(
             <form className={classes.Form}>
                 {contactGroups}
-                <Button clickHandler={this.subHandler} disabled={!this.state.formValidated}>{textContent.contactInfoForm.submit}</Button>
+                <Button clickHandler={this.subHandler} disabled={!this.state.formValidated || this.state.submitted}>{textContent.contactInfoForm.submit}</Button>
             </form>
         );
     }
@@ -401,7 +409,7 @@ class RoomContactInfoForm extends Component {
     */
     validateInput = (value, rules) => {
         let isValid = true;
-        if (!rules) {
+        if (!rules || value == "") {
             return true;
         }
         if(!rules.required && value === '') return true;
