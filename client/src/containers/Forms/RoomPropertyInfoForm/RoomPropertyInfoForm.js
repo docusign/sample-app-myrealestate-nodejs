@@ -157,7 +157,7 @@ class PropertyInfoForm extends Component {
         event.preventDefault();
 
         //disable submit button
-        this.setState({submitted: false});
+        this.setState({submitted: true});
 
         // Build the room data from the state
         let fieldData = {};
