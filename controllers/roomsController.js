@@ -156,8 +156,9 @@ exports.edit_room = async (req, res) => {
 
   //build field data while sanatizing
   for(const key in req.body) {
-    //sanatize strings
-    fieldData.data[key] = (typeof req.body[key] === "string") ? validator.escape(req.body[key]) : req.body[key]
+    //skip empty and null values and sanatize strings
+    if(!req.body[key]) continue;
+    fieldData.data[key] = (typeof req.body[key] === "string") ? validator.escape(req.body[key]) : req.body[key] 
   }
   console.log(fieldData);
 

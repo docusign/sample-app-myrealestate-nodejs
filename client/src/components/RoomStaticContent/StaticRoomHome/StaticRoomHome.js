@@ -120,14 +120,14 @@ const states = {
 }
 
 const staticRoomHome = ({address1, address2, state, city, 
-    postalCode, currentListingAmount, underContract}) => {
+    postalCode, totalPurchasePrice, underContract}) => {
     return (
         <div className={classes.Info}>
             <div className={classes.Column}><p>{textContent.staticRoomHome.address}</p><p>{address1}</p></div>
             <div className={classes.Column}><p>{textContent.staticRoomHome.country}</p><p>{(state) ? countries[state.substring(0, 2)] : ''}</p></div>    
             <div className={classes.Column}><p>{textContent.staticRoomHome.addressCntd}</p><p>{address2}</p></div>
             <div className={classes.Column}><p>{textContent.staticRoomHome.state}</p><p>{(state) ? states[state.substring(0, 2)][state.substring(3,state.length)] : ''}</p></div>
-            <div className={classes.Column}><p>{textContent.staticRoomHome.price}</p><p>${currentListingAmount}</p></div>  
+            <div className={classes.Column}><p>{textContent.staticRoomHome.price}</p><p>${totalPurchasePrice}</p></div>  
             <div className={classes.Column}><p>{textContent.staticRoomHome.city}</p><p>{city}</p></div>      
             <div className={classes.Column}><p>{textContent.staticRoomHome.contract}</p><p>{underContract ? 'Yes' : 'No'}</p></div>         
             <div className={classes.Column}><p>{textContent.staticRoomHome.postalCode}</p><p>{postalCode}</p></div>

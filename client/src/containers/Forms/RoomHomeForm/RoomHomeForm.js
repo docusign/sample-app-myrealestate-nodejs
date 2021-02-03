@@ -150,14 +150,14 @@ let getFormData = (props) => {
             valid: true,
             touched: true
         },
-        currentListingAmount: {
+        totalPurchasePrice: {
             inputType: "input",
             inputConfig: {
-                id: "currentListingAmount",
+                id: "totalPurchasePrice",
                 type: "text",
-                label: "List Price:"
+                label: "List Price: $"
             },
-            value: (props.fieldData.currentListingAmount) ? props.fieldData.currentListingAmount : '',
+            value: (props.fieldData.totalPurchasePrice) ? props.fieldData.totalPurchasePrice : 0,
             validation: {
                 isNumeric: true
             },
@@ -176,7 +176,6 @@ let getFormData = (props) => {
             },
             value: (props.fieldData.underContract !== null) ? props.fieldData.underContract : '',
             validation: {
-                isNumeric: true
             },
             valid: true,
             touched: true
@@ -279,7 +278,7 @@ class RoomHomeForm extends Component {
             // this.state.formData[fieldData][inputField.inputConfig.id] = inputField.value;
             if(inputField === 'country') continue;
             // Convert amount to a number
-            if(inputField === 'currentListingAmount') fieldData[this.state.formData[inputField].inputConfig.id] = parseInt(this.state.formData[inputField].value, 10);
+            if(inputField === 'totalPurchasePrice') fieldData[this.state.formData[inputField].inputConfig.id] = parseInt(this.state.formData[inputField].value, 10);
             else fieldData[this.state.formData[inputField].inputConfig.id] = this.state.formData[inputField].value;
         }
 
