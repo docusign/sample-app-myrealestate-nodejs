@@ -5,7 +5,6 @@ import Info from '../../components/UI/Info/Info';
 import Backdrop from '../../components/UI/Backdrop/Backdrop'
 import SandboxBanner from '../../components/UI/SandboxBanner/SandboxBanner';
 import Footer from '../../components/UI/Footer/Footer';
-import SecureLS from 'secure-ls';
 import BackgroundImage from '../../assets/images/login_background.png';
 import LinkImage from '../../assets/images/ExternalLink.png';
 

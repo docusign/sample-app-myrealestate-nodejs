@@ -18,7 +18,7 @@ class Room extends Component {
     state = {
         selectedPage: 'Home',
         editMode: false,
-        pages: ['Home', 'Property Info', 'Contact Info', 'Forms'],
+        pages: ['Home', 'Property Info', 'Contact Info'],
         fieldData: null,
         showInfo: false,
         currentRoomData: this.props.room
