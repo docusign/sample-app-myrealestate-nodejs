@@ -409,7 +409,7 @@ class RoomContactInfoForm extends Component {
     */
     validateInput = (value, rules) => {
         let isValid = true;
-        if (!rules || value == "") {
+        if (!rules || value === "") {
             return true;
         }
         if(!rules.required && value === '') return true;
