@@ -10,7 +10,7 @@ Welcome to the DocuSign sample app MyRealEstate. This web application was design
 
 While this sample app does not display all of the features of the Rooms API, it does show you how simple and powerful it can be to integrate Rooms features into an existing CRM platform.
 
-[MyRealEstate](https://guarded-everglades-18740.herokuapp.com/) is also deployed on the web!
+[MyRealEstate](https://myrealestate.sampleapps.docusign.com/) is also deployed on the web!
 
 ## Local installation and deployment
 1. If you do not already have Node.js installed on your computer, install it from the [Node.js website](https://nodejs.org/en/download/). If you are not sure whether you already have Node.js installed, open up a command-line window and enter:  
