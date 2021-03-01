@@ -36,16 +36,13 @@ If you get the current version or a message about a patch, you have Node.js inst
       TARGET_ACCOUNT_ID=false
       DS_OAUTH_SERVER=https://account-d.docusign.com
       BACKEND_APP_URL=http://localhost:3000
+      REACT_APP_SECRET={a unque string of your choice used to encrypT the local storage used by the web app}
       ```
-7. In the client folder, create an .env file with the following environment variable:  
-    ```
-    REACT_APP_SECRET={a unque string of your choice used to encrypT the local storage used by the web app}
-    ```
-8. Download all of the server Node dependencies by running this command in the root folder:
+7. Download all of the server Node dependencies by running this command in the root folder:
     `npm install`
-9. Download all of the front-end Node dependencies by running this command in the client folder:
+8. Download all of the front-end Node dependencies by running this command in the client folder:
     `npm install`
-10. Launch the application via the command:
+9. Launch the application via the command:
     `npm run dev`
 Alternatively, you can run the client and server in two separate command-line windows. Navigate each window to the rooms-sample-app folder and run the following command:
 
