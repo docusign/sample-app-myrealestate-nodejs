@@ -1,7 +1,7 @@
 {
   "name": "rooms-sample-app",
   "version": "1.0.0",
-  "description": "A sample application showing off the Docusign Rooms API. This application emulates a real estate office's CRM with rooms API integration.",
+  "description": "A sample application showing off the DocuSign Rooms API. This application emulates a real estate office's CRM with rooms API integration.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -18,7 +18,7 @@
   "keywords": [
     "Rooms",
     "API",
-    "Docusign"
+    "DocuSign"
   ],
   "author": "David Kennedy",
   "license": "MIT",
