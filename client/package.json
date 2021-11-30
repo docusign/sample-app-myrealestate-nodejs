@@ -17,7 +17,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.1",
     "secure-ls": "^1.2.6",
-    "validator": "^13.1.1"
+    "validator": "^13.7.0"
   },
   "scripts": {
     "start": "react-scripts start",
