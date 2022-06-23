@@ -33,7 +33,7 @@
     "crypto": "^1.0.1",
     "csurf": "^1.11.0",
     "docusign-esign": "^5.15.0",
-    "docusign-rooms": "1.2.1-rc1",
+    "docusign-rooms": "1.0.0",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "faker": "^4.1.0",
@@ -45,7 +45,7 @@
     "validator": "^13.7.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.4"
   },
   "optionalDependencies": {
     "fsevents": "^2.3.2"
