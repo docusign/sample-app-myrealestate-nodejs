@@ -8,6 +8,7 @@ const roomInfo = (props) => {
     return (
         <div className={classes.Form}>
             <h1 className={classes.Title}>{info.title}</h1>
+            <p>{info.GithubSource1} <a href="https://github.com/docusign/sample-app-myrealestate-nodejs/blob/main/controllers/roomsController.js#L23" target="_blank" rel="noopener noreferrer">{info.GithubSource2}</a> {info.GithubSource3} <a href="https://github.com/docusign/sample-app-myrealestate-nodejs/blob/main/controllers/roomsController.js#L142" target="_blank" rel="noopener noreferrer">{info.GithubSource4}</a>{info.GithubSource5}</p>
             <p>{info.paragraph1}</p>
             <ul>
                 <li>{info.listItem1}</li>

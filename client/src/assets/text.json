@@ -7,6 +7,9 @@
         "info": {
             "title": "Login info",
             "paragraph1": "The action demonstrates the login feature:",
+            "GithubSource1": "View the source file",
+            "GithubSource2": "authController.js",
+            "GithubSource3": "on GitHub.",
             "listItem1": "Obtain a JWT (JSON Web Token) for use in future API calls",
             "listItem2": "Obtain the DocuSign Rooms account info necessary for future API calls",
             "listItem3Part1": "(optional) Adds the user to a unique ",
@@ -54,6 +57,9 @@
         "info": {
             "title": "Create Room Info",
             "paragraph1": "The create transaction button demonstrates how to create a Room using the DocuSign Rooms API",
+            "GithubSource1": "See the source code to",
+            "GithubSource2": "create rooms",
+            "GithubSource3": "on GitHub.",
             "listItem1part1": "Obtain the user's data for the new",
             "listItem1part2": "Room",
             "listItem2": "Create the new Room",
@@ -80,6 +86,11 @@
         "info": {
             "title": "Get Rooms Info",
             "paragraph1": "This page demonstrates how to get all the rooms associated with an office as well as how to get all the field info of a specific room.",
+            "GithubSource1": "See the source code to",
+            "GithubSource2": "get rooms",
+            "GithubSource3": "or",
+            "GithubSource4": "get room field data",
+            "GithubSource5": "on Github.",
             "listItem1part1": "Get all of the",
             "listItem1part2": "rooms",
             "listItem1part3": "associated with the user's",
@@ -108,6 +119,11 @@
         "info": {
             "title": "Get/Edit Room Info",
             "paragraph1": "This page demonstrates how to get the field data for a Room and how to modify this data via the Rooms API.",
+            "GithubSource1": "See the source code to",
+            "GithubSource2": "get rooms",
+            "GithubSource3": "or",
+            "GithubSource4": "edit rooms",
+            "GithubSource5": "on Github.",
             "listItem1": "Get the data for a room using its roomId (an integer number unique to each room).",
             "listItem2": "Update any of the field data for that Room.",
             "codeflow": "Code flow",
