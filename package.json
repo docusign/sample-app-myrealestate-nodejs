@@ -40,7 +40,7 @@
     "fs": "0.0.1-security",
     "helmet": "^3.23.3",
     "memorystore": "^1.6.7",
-    "moment": "^2.29.3",
+    "moment": "^2.29.4",
     "mongoose": "^6.2.4",
     "validator": "^13.7.0"
   },
