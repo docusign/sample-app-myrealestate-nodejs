@@ -41,7 +41,7 @@
     "helmet": "^3.23.3",
     "memorystore": "^1.6.7",
     "moment": "^2.29.3",
-    "mongoose": "^6.2.4",
+    "mongoose": "^6.4.6",
     "validator": "^13.7.0"
   },
   "devDependencies": {
