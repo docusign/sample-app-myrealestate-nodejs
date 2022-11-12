@@ -15,7 +15,7 @@
     "react-country-region-selector": "^2.1.0",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^5.0.0",
+    "react-scripts": "^5.0.1",
     "secure-ls": "^1.2.6",
     "validator": "^13.7.0"
   },
