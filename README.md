@@ -212,7 +212,7 @@ roomsApi.getRooms(process.env.API_ACCOUNT_ID, null, {'officeId': req.session.off
 ````
 ## Room Page
 
-The **Room** page allows the user to modify the information about a specific room [UpdateRoomFieldData API](https://developers.docusign.com/docs/docs/rooms-api/reference/rooms/rooms/updateroomfielddata) endpoint as shown below.
+The **Room** page allows the user to modify the information about a specific room [UpdateRoomFieldData API](https://developers.docusign.com/docs/rooms-api/reference/rooms/rooms/updateroomfielddata) endpoint as shown below.
 ```javascript
     let newfieldData = {
       "data": {
