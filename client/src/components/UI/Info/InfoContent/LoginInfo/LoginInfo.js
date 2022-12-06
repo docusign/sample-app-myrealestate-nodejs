@@ -11,7 +11,7 @@ const loginInfo = (props) => (
         <ul>
             <li>{textContent.login.info.listItem1}</li>
             <li>{textContent.login.info.listItem2}</li>
-            <li>{textContent.login.info.listItem3Part1} <a href='https://developers.docusign.com/docs/rooms-api/reference/Offices' target='_blank' rel="noopener noreferrer">{textContent.login.info.listItem3Part2}</a></li>
+            <li>{textContent.login.info.listItem3Part1} <a href='https://developers.docusign.com/docs/rooms-api/reference/Offices' target='_blank' rel="noopener noreferrer"> {textContent.login.info.listItem3Part2}</a></li>
         </ul>
 
         <div className={classes.CodeFlow}>
