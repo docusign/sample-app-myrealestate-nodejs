@@ -18,9 +18,9 @@ const roomInfo = (props) => {
             <div className={classes.CodeFlow}>
                 <h2><strong>{info.codeflow}</strong></h2>
                 <h3>{info.step1}</h3>
-                <p>{info.step1info1} <a href="https://developers.docusign.com/docs/docs/rooms-api/reference/Rooms/Rooms/GetRoomFieldData/" target="_blank" rel="noopener noreferrer">{info.step1info2}</a> {info.step1info3}</p>
+                <p>{info.step1info1} <a href="https://developers.docusign.com/docs/rooms-api/reference/Rooms/Rooms/GetRoomFieldData/" target="_blank" rel="noopener noreferrer">{info.step1info2}</a> {info.step1info3}</p>
                 <h3>{info.step2}</h3>
-                <p>{info.step2info1} <a href="https://developers.docusign.com/docs/docs/rooms-api/reference/Rooms/Rooms/UpdateRoomFieldData/" target="_blank" rel="noopener noreferrer">{info.step2info2}</a> {info.step2info3}</p>
+                <p>{info.step2info1} <a href="https://developers.docusign.com/docs/rooms-api/reference/Rooms/Rooms/UpdateRoomFieldData/" target="_blank" rel="noopener noreferrer">{info.step2info2}</a> {info.step2info3}</p>
             </div>
         </div>
     );
