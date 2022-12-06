@@ -143,7 +143,7 @@ Just as mentioned in the Login section, the info button provides API-specific do
 
 All new **leads** are created by the user via the NewLeadForm modal rendered by the **+** button located at the top of the page.
 
-All new **transactions** are created by the user via the **NewsRoomForm** modal rendered by the **Create Transaction** button located in each Lead component. All fields (name, transaction side, address, city, country, state, and zip code) are required and must pass field validation until the submit button is enabled. It is important to note that not all countries and states are supported by the DocuSign Rooms API. The supported ones may be obtained via the [GetCountries](https://developers.docusign.com/rooms-api/reference/GlobalResources/Countries/GetCountries) and [GetStates](https://developers.docusign.com/rooms-api/reference/GlobalResources/States/GetStates) API calls. The formData along with the lead data is sent to the back end to construct and send the CreateRoom API call. Upon success, the Rooms page is rendered to the user, with their newly created room showing in the top-left corner. The steps to use the [CreateRoom](https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/CreateRoom) API call are shown below.
+All new **transactions** are created by the user via the **NewsRoomForm** modal rendered by the **Create Transaction** button located in each Lead component. All fields (name, transaction side, address, city, country, state, and zip code) are required and must pass field validation until the submit button is enabled. It is important to note that not all countries and states are supported by the DocuSign Rooms API. The supported ones may be obtained via the [GetCountries](https://developers.docusign.com/docs/rooms-api/reference/GlobalResources/Countries/GetCountries) and [GetStates](https://developers.docusign.com/docs/rooms-api/reference/GlobalResources/States/GetStates) API calls. The formData along with the lead data is sent to the back end to construct and send the CreateRoom API call. Upon success, the Rooms page is rendered to the user, with their newly created room showing in the top-left corner. The steps to use the [CreateRoom](https://developers.docusign.com/docs/rooms-api/reference/Rooms/Rooms/CreateRoom) API call are shown below.
 1. Get the API Client and add the auth header:  
     ```javascript
     var apiClient = new docusign.ApiClient({
@@ -196,7 +196,7 @@ All new **transactions** are created by the user via the **NewsRoomForm** modal 
 
 ## Rooms Page
 
-The **Rooms** page simply returns all of a user&#39;s rooms to them. In the case of this web application, this is all the rooms the user has created using the roomsID stored in his or her local storage. This is done by calling the [GetRooms API](https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/GetRooms) endpoint as shown below.
+The **Rooms** page simply returns all of a user&#39;s rooms to them. In the case of this web application, this is all the rooms the user has created using the roomsID stored in his or her local storage. This is done by calling the [GetRooms API](https://developers.docusign.com/docs/rooms-api/reference/Rooms/Rooms/GetRooms) endpoint as shown below.
 ```javascript
 roomsApi.getRooms(process.env.API_ACCOUNT_ID, null, {'officeId': req.session.officeId}, null)
     .then(function (rooms) {

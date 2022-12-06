@@ -20,7 +20,7 @@ const leadsInfo = (props) => {
                 <h3>{info.step1}</h3>
                 <p>{info.step1info}</p>
                 <h3>{info.step2}</h3>
-                <p>{info.step2info1} <a href="https://developers.docusign.com/rooms-api/reference/Rooms/Rooms/CreateRoom" target="_blank" rel="noopener noreferrer">{info.step2info2}</a> {info.step2info3}</p>
+                <p>{info.step2info1} <a href="https://developers.docusign.com/docs/rooms-api/reference/Rooms/Rooms/CreateRoom" target="_blank" rel="noopener noreferrer">{info.step2info2}</a> {info.step2info3}</p>
             </div>
         </div>
     );
