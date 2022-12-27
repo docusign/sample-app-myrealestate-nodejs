@@ -101,9 +101,10 @@ exports.create_room = async (req, res) => {
       }
       //build the room object
       const data = {}
-      data.name = validator.blacklist(req.body.name, '\\[\\]<>\'\"').trim();
-      data.roleId = agentRoleId;
-      data.officeId = req.session.officeId;
+      data.body = {}
+      data.body.name = validator.blacklist(req.body.name, '\\[\\]<>\'\"').trim();
+      data.body.roleId = agentRoleId;
+      data.body.officeId = req.session.officeId;
       const fieldData = {};
       fieldData.data = {};
       fieldData.data.postalCode = validator.escape(req.body.postalCode).trim();
@@ -120,18 +121,17 @@ exports.create_room = async (req, res) => {
 
       //add the buyer or seller info
       if(req.body.side ==='sell') {
-        data.transactionSideId = 'sell';
+        data.body.transactionSideId = 'sell';
         fieldData.data.seller1 = contactInfo;
       } else {
-        data.transactionSideId = 'buy';
+        data.body.transactionSideId = 'buy';
         fieldData.data.buyer1 = contactInfo;
       }
-      data.fieldData = fieldData;
-
+      data.body.fieldData = fieldData;
       //send the createroom request
       //here is an example on how you do not have to use the SDK if you do not want
       //too, but instead can just make the API call yourself
-      const response = await roomsApi.createRoom(data, process.env.API_ACCOUNT_ID, null); 
+      const response = await roomsApi.createRoom(process.env.API_ACCOUNT_ID, data, null); 
       res.status(200).json(response);
     } catch(error){
       console.log(error);
@@ -152,13 +152,13 @@ exports.edit_room = async (req, res) => {
   var roomsApi = new RoomsNodeSDK.RoomsApi(roomsNodeSDK);
 
   const fieldData = {};
-  fieldData.data = {};
-
+  fieldData.body = {};
+  fieldData.body.data = {};
   //build field data while sanatizing
   for(const key in req.body) {
     //skip empty and null values and sanatize strings
     if(!req.body[key]) continue;
-    fieldData.data[key] = (typeof req.body[key] === "string") ? validator.escape(req.body[key]) : req.body[key] 
+    fieldData.body.data[key] = (typeof req.body[key] === "string") ? validator.escape(req.body[key]) : req.body[key] 
   }
   console.log(fieldData);
 
@@ -169,7 +169,7 @@ exports.edit_room = async (req, res) => {
     console.log(req.params);
     console.log(fieldData);
     console.log(fieldData);
-    const response = await roomsApi.updateRoomFieldData(fieldData, req.params.roomId, process.env.API_ACCOUNT_ID);
+    const response = await roomsApi.updateRoomFieldData(process.env.API_ACCOUNT_ID, req.params.roomId, fieldData);
     res.status(200).send('Room updated successfully');
   } catch(error) {
     console.log(error);

@@ -140,14 +140,15 @@ const addNewOfficeToSessionIfMissing = async (req) => {
     
         //Generate an office, it gets 5 tries to do so as office names must be unique
         let newOffice = {};
+        newOffice.body = {};
         let tries = 0;
         let officeId;
         //think about this :)
         while(tries++ < 5) {
             //generate a random office name
-            newOffice.name = crypto.randomBytes(20).toString('hex');
+            newOffice.body.name = crypto.randomBytes(20).toString('hex');
             try {
-                let response = await officeApi.createOffice(newOffice, process.env.API_ACCOUNT_ID);
+                let response = await officeApi.createOffice(process.env.API_ACCOUNT_ID, newOffice);
                 officeId = response.officeId;
                 break;
             } catch(error) {
