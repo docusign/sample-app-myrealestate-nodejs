@@ -6,7 +6,7 @@
 - [Room page](#room-page)
 - [Licenses](#licenses)
 
-Welcome to the DocuSign sample app MyRealEstate. This web application was designed to demonstrate the DocuSign Rooms API using a sample real estate CRM integration. For more information, see the [Rooms API](https://developers.docusign.com/rooms-api) on the DocuSign Developer Center.
+Welcome to the DocuSign sample app MyRealEstate. This web application was designed to demonstrate the DocuSign Rooms API using a sample real estate CRM integration. For more information, see the [Rooms API](https://developers.docusign.com/docs/rooms-api) on the DocuSign Developer Center.
 
 While this sample app does not display all of the features of the Rooms API, it does show you how simple and powerful it can be to integrate Rooms features into an existing CRM platform.
 
