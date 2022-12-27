@@ -21,7 +21,7 @@ If you get the current version or a message about a patch, you have Node.js inst
 4. Open up a command-line window and change to the room-sample-app folder.
 5. In the root folder, create two files: a .env file and a private.key file.
 6. Set up the .env file and the private.key file:
-    * Log in to your developer account and navigate to the [Apps and Keys](https://admindemo.docusign.com/api-integrator-key) page.
+    * Log in to your developer account and navigate to the [Apps and Keys](https://admindemo.docusign.com/authenticate?goTo=apiIntegratorKey) page.
     * Under My Apps / Integration Keys, click the ADD APP / INTEGRATION KEY button and enter a name for your integration.
     * Select the newly created integration key and, in the Authentication section, click the button that says '+ ADD RSA KEYPAIR'. Copy the contents of the private key and paste it into your private.key file.
     * In the Addition settings section of the integration key page, add http://localhost:3000 as a Redirect URI.
