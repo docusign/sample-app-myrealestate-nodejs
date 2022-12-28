@@ -13,8 +13,8 @@ While this sample app does not display all of the features of the Rooms API, it 
 [MyRealEstate](https://myrealestate.sampleapps.docusign.com/) is also deployed on the web!
 
 ## Local installation and deployment
-1. If you do not already have Node.js installed on your computer, install it from the [Node.js website](https://nodejs.org/en/download/). If you are not sure whether you already have Node.js installed, open up a command-line window and enter:  
-`npm version`  
+1. If you do not already have Node.js installed on your computer, install it from the [Node.js website](https://nodejs.org/en/download/). If you are not sure whether you already have Node.js installed, open up a command-line window and enter:
+`npm version`
 If you get the current version or a message about a patch, you have Node.js installed. If not, you will need to install it.
 2. Get a local copy of this repo. This can be done via downloading the repo or cloning the repo on your computer.
 3. If you do not already have one, create a [DocuSign developer account](https://go.docusign.com/o/sandbox/).
@@ -25,7 +25,7 @@ If you get the current version or a message about a patch, you have Node.js inst
     * Under My Apps / Integration Keys, click the ADD APP / INTEGRATION KEY button and enter a name for your integration.
     * Select the newly created integration key and, in the Authentication section, click the button that says '+ ADD RSA KEYPAIR'. Copy the contents of the private key and paste it into your private.key file.
     * In the Addition settings section of the integration key page, add http://localhost:3000 as a Redirect URI.
-    * Add the following data to the .env file:  
+    * Add the following data to the .env file:
       ```
       NODE_ENV=dev
       USER_ID={a GUID unique to each user's DocuSign Account, located on the Apps and Keys page of DocuSign eSignature Settings}
@@ -58,17 +58,17 @@ Alternatively, you can run the client and server in two separate command-line wi
 11. On most devices, your computer will open up a browser automatically and load the web application. In case it doesn't, open http://localhost:3000 in any browser of your choice to use the web application.
 
 ## Login page
-The login authentication for this application uses two DocuSign Rooms API calls: one to get a JWT and the other to generate a unique ID for each user. Industry CRMs have their own user management and authentication systems; this sample CRM integration leaves these features out. Instead, it focuses on the authentication of the web app to the DocuSign API via DocuSign JWT authentication. 
+The login authentication for this application uses two DocuSign Rooms API calls: one to get a JWT and the other to generate a unique ID for each user. Industry CRMs have their own user management and authentication systems; this sample CRM integration leaves these features out. Instead, it focuses on the authentication of the web app to the DocuSign API via DocuSign JWT authentication.
 
-The front-end login code is contained in:  
+The front-end login code is contained in:
 **/client/src/containers/Login/Login.js**
 
-The back-end login code is contained in:  
-**/controllers/authcontroller.js** and  
+The back-end login code is contained in:
+**/controllers/authcontroller.js** and
 **/controllers/officecontroller.js**
 
 ### Obtain the JWT token
-1. Set up the base paths depending on whether your app is in production or in development, and  then instantiate the DocuSign API object.  
+1. Set up the base paths depending on whether your app is in production or in development, and  then instantiate the DocuSign API object.
     ```javascript
     // Get the base paths depending on whether the app is in production or development
     var basePath = (process.env.NODE_ENV === 'prod') ?
@@ -85,7 +85,7 @@ The back-end login code is contained in:
     ```javascript
     // Get the RSA key
     rsaKey = fs.readFileSync(process.env.PRIVATE_KEY_LOCATION);
-    // Declare the scopes 
+    // Declare the scopes
     const scopes = [
         oAuth.Scope.IMPERSONATION,
         oAuth.Scope.SIGNATURE,
@@ -110,7 +110,7 @@ The back-end login code is contained in:
 ### Obtain a unique office ID for each user
 In a traditional integration, a Rooms account would be made for every CRM user. Either the user’s Rooms account information is stored in the CRM application, or it can be obtained using the DocuSign Rooms GetUsers API, which returns the list of users associated with the company, which then can be used to find the Rooms account ID of the current user logged into the CRM. You obtain their USER_ID and API_ACCOUNT_ID by calling the eSignature **userinfo** endpoint. However, in this sample app, everyone is logged in as the same test user. Thus, a call to the GetRooms API would return every room made by every user of this application. To get around this, this application takes advantage of the Room object's officeId field. In a traditional deployment, offices are made by the admin with users being assigned to specific offices. However, what we do here is assign every user a unique office ID. Thus, every Room created is associated with the unique office ID given to each user, making that room only accessible to them. The steps to create a unique office ID for each user are shown below:
 
-1. The unique office ID is stored in local storage using [AES encryption](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard). When the user logs in, the front end checks to see whether the office ID is contained in local storage. If it is, the front end sends this office ID to the back end to be added to the session cookie for future API calls. However, if the office ID is not located in local storage, either the user has never used the app before or has deleted their local storage. A request is then sent to the back end to obtain a new office ID and then store it in local storage. The steps for creating a unique office ID are shown below:  
+1. The unique office ID is stored in local storage using [AES encryption](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard). When the user logs in, the front end checks to see whether the office ID is contained in local storage. If it is, the front end sends this office ID to the back end to be added to the session cookie for future API calls. However, if the office ID is not located in local storage, either the user has never used the app before or has deleted their local storage. A request is then sent to the back end to obtain a new office ID and then store it in local storage. The steps for creating a unique office ID are shown below:
     ```javascript
     //  Instantiate the DocuSign apiClient object
     var apiClient = new docusign.ApiClient({
@@ -131,10 +131,10 @@ In a traditional integration, a Rooms account would be made for every CRM user. 
 ## Leads Page
 The **Leads** page has four core functions, enabling users to view their leads, create new leads, initiate buy or sell transactions from these leads, and view the latest transaction created by a specific lead.
 
-The front-end login code is contained in:  
+The front-end login code is contained in:
 **/client/src/containers/Leads/Leads.js**
 
-The back-end login code is contained in:  
+The back-end login code is contained in:
 **/controllers/roomsController.js**
 
 Since this is a sample application, instead of using a database to store a user&#39;s leads, the leads are instead encrypted and stored in local storage. If it is a user&#39;s first time visiting the sample application or they have recently cleared their browser&#39;s local storage, the **Login** container detects that there are no contacts in local storage and then loads in a few sample leads from &#39;client/src/assets/localLeads.json&#39; and also adds them to the user&#39;s local storage.
@@ -144,14 +144,14 @@ Just as mentioned in the Login section, the info button provides API-specific do
 All new **leads** are created by the user via the NewLeadForm modal rendered by the **+** button located at the top of the page.
 
 All new **transactions** are created by the user via the **NewsRoomForm** modal rendered by the **Create Transaction** button located in each Lead component. All fields (name, transaction side, address, city, country, state, and zip code) are required and must pass field validation until the submit button is enabled. It is important to note that not all countries and states are supported by the DocuSign Rooms API. The supported ones may be obtained via the [GetCountries](https://developers.docusign.com/docs/rooms-api/reference/GlobalResources/Countries/GetCountries) and [GetStates](https://developers.docusign.com/docs/rooms-api/reference/GlobalResources/States/GetStates) API calls. The formData along with the lead data is sent to the back end to construct and send the CreateRoom API call. Upon success, the Rooms page is rendered to the user, with their newly created room showing in the top-left corner. The steps to use the [CreateRoom](https://developers.docusign.com/docs/rooms-api/reference/Rooms/Rooms/CreateRoom) API call are shown below.
-1. Get the API Client and add the auth header:  
+1. Get the API Client and add the auth header:
     ```javascript
     var apiClient = new docusign.ApiClient({
         basePath: basePath,
         oAuthBasePath: oAuthBasePath
-    });    
+    });
     ```
-2. Get the role ID based upon the user's authorization level. This application uses 'agent' as the default authorization.  
+2. Get the role ID based upon the user's authorization level. This application uses 'agent' as the default authorization.
     ```javascript
     var rolesApi = new docusign.RolesApi(apiClient);
     try{
@@ -166,7 +166,7 @@ All new **transactions** are created by the user via the **NewsRoomForm** modal 
         }
       }
     ```
-3. Build the new room object from the front-end form data:  
+3. Build the new room object from the front-end form data:
     ```javascript
     const data = {}
     data.name = req.body.name;
@@ -189,9 +189,9 @@ All new **transactions** are created by the user via the **NewsRoomForm** modal 
     }
     data.fieldData = fieldData;
     ```
-4. Make the API call:  
+4. Make the API call:
     ```javascript
-    const response = await roomsApi.createRoom(data, process.env.API_ACCOUNT_ID, null); 
+    const response = await roomsApi.createRoom(data, process.env.API_ACCOUNT_ID, null);
     ```
 
 ## Rooms Page
@@ -208,7 +208,7 @@ roomsApi.getRooms(process.env.API_ACCOUNT_ID, null, {'officeId': req.session.off
     if (error) {
         res.status(error.status).send(error.message);
     }
-  }); 
+  });
 ````
 ## Room Page
 
@@ -223,13 +223,14 @@ The **Room** page allows the user to modify the information about a specific roo
     }
     let optsOrCallback = {body: newFieldData}
     roomsApi.updateRoomFieldData(accountId, roomId, optsOrCallback)
-        .then(function (newFieldData) {    
-            res.status(200).json(newFieldData)     
+        .then(function (newFieldData) {
+            res.status(200).json(newFieldData)
         })
       .catch(function (error) {
         if (error) {
             res.status(error.status).send(error.message);
         }
-      }); 
+      });
 ````
 ## Licenses
+This repository uses the MIT License. See the [LICENSE][https://github.com/docusign/sample-app-myrealestate-nodejs/blob/main/LICENSE] file for more information.
