@@ -233,4 +233,4 @@ The **Room** page allows the user to modify the information about a specific roo
       });
 ````
 ## Licenses
-This repository uses the MIT License. See the [LICENSE][https://github.com/docusign/sample-app-myrealestate-nodejs/blob/main/LICENSE] file for more information.
+This repository uses the MIT License. See the [LICENSE](https://github.com/docusign/sample-app-myrealestate-nodejs/blob/main/LICENSE) file for more information.
