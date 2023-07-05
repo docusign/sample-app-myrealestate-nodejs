@@ -47,7 +47,7 @@ const form = (props) => {
                 dropdownStyle={(props.format === 'twoColumns') ? 'full' : 'half'}
                 value={input.value}
                 touched={input.touched}
-                valid={input.valid}
+                valid={input.valid !== undefined && input.valid.toString()}
                 selectedCountry={props.formData["country"] ? props.formData["country"].value : ''}
                 changed={changeHandler}/>
         )

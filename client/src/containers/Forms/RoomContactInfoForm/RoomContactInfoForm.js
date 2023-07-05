@@ -299,7 +299,7 @@ class RoomContactInfoForm extends Component {
                     config={input.inputConfig}
                     value={input.value}
                     touched={input.touched}
-                    valid={input.valid}
+                    valid={input.valid !== undefined && input.valid.toString()}
                     changed={changeHandler}/>
             )
         }
