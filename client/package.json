@@ -23,7 +23,8 @@
   },
   "overrides": {
     "nth-check": "2.1.1",
-    "minimist": "1.2.6"
+    "minimist": "1.2.6",
+    "postcss": "8.4.35"
   },
   "scripts": {
     "start": "react-scripts start",
