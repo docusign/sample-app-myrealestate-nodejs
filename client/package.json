@@ -16,7 +16,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.13.0",
     "react-scripts": "^5.0.1",
-    "secure-ls": "^1.2.6",
+    "localforage": "1.10.0",
     "source-map-loader": "^4.0.1",
     "validator": "^13.9.0",
     "webpack-dev-server": "^4.15.1"
@@ -24,7 +24,7 @@
   "overrides": {
     "nth-check": "2.1.1",
     "minimist": "1.2.6",
-    "postcss": "8.4.35"
+    "resolve-url-loader": "5.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

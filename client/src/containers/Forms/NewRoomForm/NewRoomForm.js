@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
-import SecureLS from 'secure-ls';
+import localForage from 'localforage';
 import textContent from '../../../assets/text.json';
 import Form from '../../../components/UI/Form/Form';
-
 
 const getStateOptions = () => {
     const stateOptions = {};
@@ -105,7 +104,7 @@ const getStateOptions = () => {
         { value: 'US-WA', displayValue: 'Washington' },
         { value: 'US-WV', displayValue: 'West Virginia' },
         { value: 'US-WI', displayValue: 'Wisconsin' },
-        { value: 'US-WY', displayValue: 'Wyoming' }  
+        { value: 'US-WY', displayValue: 'Wyoming' }
     ];
     return stateOptions;
 }
@@ -142,8 +141,8 @@ let getFormData = () => {
             inputConfig: {
                 id: "Transaction_Side",
                 options: [
-                    {value: "buyer", displayValue: "Buyer"}, 
-                    {value: "seller", displayValue: "Seller"}
+                    { value: "buyer", displayValue: "Buyer" },
+                    { value: "seller", displayValue: "Seller" }
                 ],
                 label: textContent.newRoomForm.side
             },
@@ -171,10 +170,10 @@ let getFormData = () => {
             inputConfig: {
                 id: "Country",
                 options: [
-                    {value: "US", displayValue: "United States"}, 
-                    {value: "CA", displayValue: "Canada"},
-                    {value: "AU", displayValue: "Australia"}, 
-                    {value: "NZ", displayValue: "New Zealand"},
+                    { value: "US", displayValue: "United States" },
+                    { value: "CA", displayValue: "Canada" },
+                    { value: "AU", displayValue: "Australia" },
+                    { value: "NZ", displayValue: "New Zealand" },
                 ],
                 label: textContent.newRoomForm.country
             },
@@ -192,8 +191,8 @@ let getFormData = () => {
             },
             value: '',
             validation: {},
-            valid: false,       
-            touched: false 
+            valid: false,
+            touched: false
         },
         city: {
             inputType: "input",
@@ -241,7 +240,7 @@ class NewRoomForm extends Component {
         Method sent to children to update form element state
     */
     updateState = (updatedFormData, formIsValid) => {
-        this.setState({formData: updatedFormData, formValidated: formIsValid});
+        this.setState({ formData: updatedFormData, formValidated: formIsValid });
     }
 
     /*
@@ -281,36 +280,37 @@ class NewRoomForm extends Component {
         roomData.state = this.state.formData.state.value;
         roomData.postalCode = this.state.formData.zipcode.value;
 
-
         // We need to return the room ID of the room that was added so that it can be added to the contact
-        axios.post('/rooms', roomData, {withCredentials: true})
-        .then(room => {
-            // Success: the room was created; now add its ID to the contact in local storage
-            var ls = new SecureLS({encodingType: 'aes', encryptionSecret: process.env.REACT_APP_SECRET});
-            // Get leads from local storage
-            let leads = ls.get('leads');
-            // Add the new Room to the selected lead and save leads back to local storage
-            leads[this.props.index].room = room.data;
-            ls.set('leads', leads);
-            // Render the Room page of the newly created room
-           this.props.renderSelectedRoom(room.data);
-        })
-        .catch(error => {
-            console.log("Error creating the room");
-            console.log(error);
-        });
+        axios.post('/rooms', roomData, { withCredentials: true })
+            .then(async roomResponse => {
+                const room = roomResponse.data;
+                // Get leads from local storage
+                await localForage.getItem('leads').then(async leads => {
+                    if (leads) {
+                        // Add the new Room to the selected lead and save leads back to local storage
+                        leads[this.props.index].room = room;
+                        await localForage.setItem('leads', leads);
+                        // Render the Room page of the newly created room
+                        this.props.renderSelectedRoom(room);
+                    }
+                });
+            })
+            .catch(error => {
+                console.log("Error creating the room");
+                console.log(error);
+            });
     }
 
     render() {
         return (
-            <Form 
+            <Form
                 formSubmissionHandler={this.formSubmissionHandler}
                 formValidated={this.state.formValidated}
-                formTitle={(this.props.lead !== null) ? "Create a New Transaction" : null }
+                formTitle={(this.props.lead !== null) ? "Create a New Transaction" : null}
                 subTitle={(this.props.lead !== null) ? "For : " + this.props.lead.firstName + " " + this.props.lead.lastName : null}
                 update={this.updateState}
-                formData={this.state.formData} 
-                buttonDisabled={this.state.submitted}/>
+                formData={this.state.formData}
+                buttonDisabled={this.state.submitted} />
         )
     }
 }
