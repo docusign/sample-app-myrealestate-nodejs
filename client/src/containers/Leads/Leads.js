@@ -28,7 +28,6 @@ const getLeads = () => {
     //load the leads from json file to local storage
     return localForage.getItem('leads')
         .then(async (leads) => {
-            console.log(leads);
             //if there are now leads in local storage, copy test leads
             if (leads === null) {
                 leads = jsonLeads.leads;
