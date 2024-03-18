@@ -1,7 +1,6 @@
 
-import React, {Component} from 'react';
-import SecureLS from 'secure-ls';
-
+import React, { Component } from 'react';
+import localForage from 'localforage';
 import Lead from '../../components/Lead/Lead';
 import Modal from '../../components/UI/Modal/Modal';
 import Backdrop from '../../components/UI/Backdrop/Backdrop';
@@ -25,21 +24,22 @@ import classes from './Leads.module.css';
     and returns these leads.
 */
 const getLeads = () => {
-    var ls = new SecureLS({encodingType: 'aes', encryptionSecret: process.env.REACT_APP_SECRET});
     //get leads from local storage, if there are none
     //load the leads from json file to local storage
-    let leads = ls.get('leads');
-    //if there are now leads in local storage, copy test leads
-    if(leads === '') {
-        ls.set('leads', jsonLeads.leads);
-        leads = ls.get('leads');
-    } 
-    return leads;
-}
+    return localForage.getItem('leads')
+        .then(async (leads) => {
+            //if there are now leads in local storage, copy test leads
+            if (leads === null) {
+                leads = jsonLeads.leads;
+                await localForage.setItem('leads', leads);
+            }
+            return leads;
+        });
+};
 
 class Leads extends Component {
     state = {
-        leads: getLeads(), //the leads loaded from json file and local storage
+        leads: [], //the leads loaded from json file and local storage
         selectedLead: null,  //stores the lead that is currently selected
         displayRoomForm: false, //controls whether or not the modal and backdrop is displayed
         displayContactForm: false, //controls whether or not the modal and backdrop is displayed
@@ -54,11 +54,11 @@ class Leads extends Component {
             form (String) either 'room' or 'contact' for which form is being 
     */
     modalToggleHandler = (form) => {
-        if(form === 'room') {
+        if (form === 'room') {
             this.setState((prevState, props) => ({
                 displayRoomForm: !prevState.displayRoomForm
             }))
-        } else if(form === 'contact') {
+        } else if (form === 'contact') {
             this.setState((prevState, props) => ({
                 displayContactForm: !prevState.displayContactForm
             }))
@@ -87,7 +87,7 @@ class Leads extends Component {
         this.setState((prevState, props) => ({
             displayRoomForm: !prevState.displayRoomForm,
             selectedLead: index
-        }))        
+        }))
     }
 
     /*
@@ -96,61 +96,68 @@ class Leads extends Component {
             newLead: See Lead for data structure
     */
     createLeadFormSubHandler = (newLead) => {
-        //Update the leads in the local storeage first
-        var ls = new SecureLS({encodingType: 'aes', encryptionSecret: process.env.REACT_APP_SECRET});
         //get leads from local storage, if there are none
         //load the leads from json file to local storage
-        let leads = ls.get('leads');
-        leads.unshift(newLead);
-        ls.set('leads', leads);
-        
-        //update the state with the new lead
+        localForage.getItem('leads')
+            .then(leads => {
+                // Add new lead to the leads array
+                leads.unshift(newLead);
+                //update the state with the new lead
+                this.setState({
+                    leads: leads,
+                    displayContactForm: false
+                });
+                return localForage.setItem('leads', leads);
+            });
+    }
+
+    async componentDidMount() {
+        const leads = await getLeads();
         this.setState({
-            leads: leads,
-            displayContactForm: false
+            leads: leads
         });
     }
 
     render() {
         let leadInfo = null;
-        if(this.state.selectedLead !== null) {
+        if (this.state.selectedLead !== null) {
             leadInfo = this.state.leads[this.state.selectedLead];
         }
         const leads = this.state.leads.map((lead, index) => {
             return (
-                <Lead 
+                <Lead
                     key={index}
-                    firstName={ lead.firstName }
-                    lastName={ lead.lastName } 
-                    email={ lead.email }
-                    phoneNumber={ lead.phoneNumber }
+                    firstName={lead.firstName}
+                    lastName={lead.lastName}
+                    email={lead.email}
+                    phoneNumber={lead.phoneNumber}
                     click={() => this.createRoomButtonHandler(index)}
                     infoToggle={this.modalToggleHandler.bind(this, 'info')}
-                    room={ lead.room }
+                    room={lead.room}
                     renderLastCreatedRoom={this.props.renderSelectedRoom.bind(this, lead.room)}
                     showInfo={this.state.displayInfo}
-                    viewRoomClickable={lead.roooms}/>
+                    viewRoomClickable={lead.roooms} />
             )
         });
-        
+
         return (
             <React.Fragment>
-                <Backdrop 
+                <Backdrop
                     show={this.state.displayRoomForm || this.state.displayContactForm || this.state.displayInfo}
-                    click={this.modalToggleHandler.bind(this, 'off')}/>
-                <Modal show={this.state.displayRoomForm} click={this.modalToggleHandler.bind(this, 'room')} type="Form"><NewRoomForm lead={leadInfo} index={this.state.selectedLead} renderSelectedRoom={this.props.renderSelectedRoom}/></Modal>
-                <Modal show={this.state.displayContactForm} click={this.modalToggleHandler.bind(this, 'contact')} type="Form"><NewContactForm sub={this.createLeadFormSubHandler}/></Modal>
+                    click={this.modalToggleHandler.bind(this, 'off')} />
+                <Modal show={this.state.displayRoomForm} click={this.modalToggleHandler.bind(this, 'room')} type="Form"><NewRoomForm lead={leadInfo} index={this.state.selectedLead} renderSelectedRoom={this.props.renderSelectedRoom} /></Modal>
+                <Modal show={this.state.displayContactForm} click={this.modalToggleHandler.bind(this, 'contact')} type="Form"><NewContactForm sub={this.createLeadFormSubHandler} /></Modal>
                 <div className={classes.Leads}>
                     <div className={classes.LeadContent}>
-                        <div className = {classes.TitleBar}>
-                            <h1 className={classes.TitleHeader}>{textContent.leads.title}</h1> 
+                        <div className={classes.TitleBar}>
+                            <h1 className={classes.TitleHeader}>{textContent.leads.title}</h1>
                             <button className={classes.Button} onClick={this.modalToggleHandler.bind(this, 'contact')}>{textContent.leads.create}</button>
                         </div>
                         <div className={classes.LeadsBox}>{leads}</div>
                     </div>
                 </div>
             </React.Fragment>
-        ) 
+        )
     }
 }
 
