@@ -14,10 +14,10 @@ const oAuthBasePath = oAuth.BasePath.DEMO;
 
 /**
  * Middlewear to check that the access token is still valid.
- * It should be used before any route that makes an API call to DocuSign.
+ * It should be used before any route that makes an API call to Docusign.
  * It checks that the existing access accessToken can be used.
  * If the existing accessToken is expired, then
- * a new accessToken will be obtained from DocuSign.
+ * a new accessToken will be obtained from Docusign.
  */
 module.exports.updateToken = async (req) => {
     let rsaKey = fs.readFileSync(process.env.PRIVATE_KEY_LOCATION);
@@ -209,7 +209,7 @@ module.exports.login = async (req, res, next) => {
 }
 
 /**
- * Clears the DocuSign JWT token and session info
+ * Clears the Docusign JWT token and session info
  * sets
  * @function
  */

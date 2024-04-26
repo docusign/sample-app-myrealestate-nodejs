@@ -1,7 +1,7 @@
 {
     "login": {
         "title": "Welcome to the MyRealEstate Sample Application",
-        "paragraph": "This app was designed to showcase the potential integration of the DocuSign Rooms API into a RealEstate CRM. This application is open-source and all of the code is located in our GitHub repository.",
+        "paragraph": "This app was designed to showcase the potential integration of the Docusign Rooms API into a RealEstate CRM. This application is open-source and all of the code is located in our GitHub repository.",
         "loginButton": "Try the App",
         "GitHub": "Go to GitHub",
         "info": {
@@ -11,7 +11,7 @@
             "GithubSource2": "authController.js",
             "GithubSource3": "on GitHub.",
             "listItem1": "Obtain a JWT (JSON Web Token) for use in future API calls",
-            "listItem2": "Obtain the DocuSign Rooms account info necessary for future API calls",
+            "listItem2": "Obtain the Docusign Rooms account info necessary for future API calls",
             "listItem3Part1": "(optional) Adds the user to a unique ",
             "listItem3Part2": "office",
             "codeflow": "Code flow",
@@ -30,13 +30,13 @@
         }
     },
     "sandboxbanner": {
-        "title": "DocuSign: It's time to agree better",
-        "paragraph": "DocuSign helps organizations connect and automate how they prepare, sign, act on, and manage agreements.",
+        "title": "Docusign: It's time to agree better",
+        "paragraph": "Docusign helps organizations connect and automate how they prepare, sign, act on, and manage agreements.",
         "createbutton": "Create Developer Account",
         "learnmore": "Learn More"
     },
     "footer": {
-        "message": "2024 DocuSign Inc."
+        "message": "2024 Docusign Inc."
     },
     "toolbar": {
         "title": "My Real Estate",
@@ -56,7 +56,7 @@
         "title": "Leads",
         "info": {
             "title": "Create Room Info",
-            "paragraph1": "The create transaction button demonstrates how to create a Room using the DocuSign Rooms API",
+            "paragraph1": "The create transaction button demonstrates how to create a Room using the Docusign Rooms API",
             "GithubSource1": "See the source code to",
             "GithubSource2": "create rooms",
             "GithubSource3": "on GitHub.",
