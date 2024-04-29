@@ -6,7 +6,7 @@
 - [Room page](#room-page)
 - [Licenses](#licenses)
 
-Welcome to the DocuSign sample app MyRealEstate. This web application was designed to demonstrate the DocuSign Rooms API using a sample real estate CRM integration. For more information, see the [Rooms API](https://developers.docusign.com/docs/rooms-api) on the DocuSign Developer Center.
+Welcome to the Docusign sample app MyRealEstate. This web application was designed to demonstrate the Docusign Rooms API using a sample real estate CRM integration. For more information, see the [Rooms API](https://developers.docusign.com/docs/rooms-api) on the Docusign Developer Center.
 
 While this sample app does not display all of the features of the Rooms API, it does show you how simple and powerful it can be to integrate Rooms features into an existing CRM platform.
 
@@ -17,7 +17,7 @@ While this sample app does not display all of the features of the Rooms API, it 
 `npm version`
 If you get the current version or a message about a patch, you have Node.js installed. If not, you will need to install it.
 2. Get a local copy of this repo. This can be done via downloading the repo or cloning the repo on your computer.
-3. If you do not already have one, create a [DocuSign developer account](https://go.docusign.com/o/sandbox/).
+3. If you do not already have one, create a [Docusign developer account](https://go.docusign.com/o/sandbox/).
 4. Open up a command-line window and change to the room-sample-app folder.
 5. In the root folder, create two files: a .env file and a private.key file.
 6. Set up the .env file and the private.key file:
@@ -28,9 +28,9 @@ If you get the current version or a message about a patch, you have Node.js inst
     * Add the following data to the .env file:
       ```
       NODE_ENV=dev
-      USER_ID={a GUID unique to each user's DocuSign Account, located on the Apps and Keys page of DocuSign eSignature Settings}
-      API_ACCOUNT_ID={a GUID unique to each user's DocuSign Account, located on the Apps and Keys page of the DocuSign eSignature Settings}
-      INTEGRATION_KEY={a GUID unique to each application making DocuSign API calls. This key was created hwen you added the app and is viewable on the Apps and Keys page of DocuSign eSignature Settings}
+      USER_ID={a GUID unique to each user's Docusign Account, located on the Apps and Keys page of Docusign eSignature Settings}
+      API_ACCOUNT_ID={a GUID unique to each user's Docusign Account, located on the Apps and Keys page of the Docusign eSignature Settings}
+      INTEGRATION_KEY={a GUID unique to each application making Docusign API calls. This key was created hwen you added the app and is viewable on the Apps and Keys page of Docusign eSignature Settings}
       SESSION_SECRET={a unique string of your choice used to encrypt the session cookie}
       PRIVATE_KEY_LOCATION=private.key
       TARGET_ACCOUNT_ID=false
@@ -58,7 +58,7 @@ Alternatively, you can run the client and server in two separate command-line wi
 11. On most devices, your computer will open up a browser automatically and load the web application. In case it doesn't, open http://localhost:3000 in any browser of your choice to use the web application.
 
 ## Login page
-The login authentication for this application uses two DocuSign Rooms API calls: one to get a JWT and the other to generate a unique ID for each user. Industry CRMs have their own user management and authentication systems; this sample CRM integration leaves these features out. Instead, it focuses on the authentication of the web app to the DocuSign API via DocuSign JWT authentication.
+The login authentication for this application uses two Docusign Rooms API calls: one to get a JWT and the other to generate a unique ID for each user. Industry CRMs have their own user management and authentication systems; this sample CRM integration leaves these features out. Instead, it focuses on the authentication of the web app to the Docusign API via Docusign JWT authentication.
 
 The front-end login code is contained in:
 **/client/src/containers/Login/Login.js**
@@ -68,7 +68,7 @@ The back-end login code is contained in:
 **/controllers/officecontroller.js**
 
 ### Obtain the JWT token
-1. Set up the base paths depending on whether your app is in production or in development, and  then instantiate the DocuSign API object.
+1. Set up the base paths depending on whether your app is in production or in development, and  then instantiate the Docusign API object.
     ```javascript
     // Get the base paths depending on whether the app is in production or development
     var basePath = (process.env.NODE_ENV === 'prod') ?
@@ -108,11 +108,11 @@ The back-end login code is contained in:
 4. Finally, now that the session has a token, the token is available to be added to all future API requests. However, before every API request, it is important to ensure that the token has not expired. For this application, this is handled by Express middleware that checks the expiration date of the token in the session cookie of each incoming request, and if the cookie is expired, it replaces it with a new one, just as in the code in step 3.
 
 ### Obtain a unique office ID for each user
-In a traditional integration, a Rooms account would be made for every CRM user. Either the user’s Rooms account information is stored in the CRM application, or it can be obtained using the DocuSign Rooms GetUsers API, which returns the list of users associated with the company, which then can be used to find the Rooms account ID of the current user logged into the CRM. You obtain their USER_ID and API_ACCOUNT_ID by calling the eSignature **userinfo** endpoint. However, in this sample app, everyone is logged in as the same test user. Thus, a call to the GetRooms API would return every room made by every user of this application. To get around this, this application takes advantage of the Room object's officeId field. In a traditional deployment, offices are made by the admin with users being assigned to specific offices. However, what we do here is assign every user a unique office ID. Thus, every Room created is associated with the unique office ID given to each user, making that room only accessible to them. The steps to create a unique office ID for each user are shown below:
+In a traditional integration, a Rooms account would be made for every CRM user. Either the user’s Rooms account information is stored in the CRM application, or it can be obtained using the Docusign Rooms GetUsers API, which returns the list of users associated with the company, which then can be used to find the Rooms account ID of the current user logged into the CRM. You obtain their USER_ID and API_ACCOUNT_ID by calling the eSignature **userinfo** endpoint. However, in this sample app, everyone is logged in as the same test user. Thus, a call to the GetRooms API would return every room made by every user of this application. To get around this, this application takes advantage of the Room object's officeId field. In a traditional deployment, offices are made by the admin with users being assigned to specific offices. However, what we do here is assign every user a unique office ID. Thus, every Room created is associated with the unique office ID given to each user, making that room only accessible to them. The steps to create a unique office ID for each user are shown below:
 
 1. The unique office ID is stored in local storage using [AES encryption](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard). When the user logs in, the front end checks to see whether the office ID is contained in local storage. If it is, the front end sends this office ID to the back end to be added to the session cookie for future API calls. However, if the office ID is not located in local storage, either the user has never used the app before or has deleted their local storage. A request is then sent to the back end to obtain a new office ID and then store it in local storage. The steps for creating a unique office ID are shown below:
     ```javascript
-    //  Instantiate the DocuSign apiClient object
+    //  Instantiate the Docusign apiClient object
     var apiClient = new docusign.ApiClient({
         basePath: basePath,
         oAuthBasePath: oAuthBasePath
@@ -143,7 +143,7 @@ Just as mentioned in the Login section, the info button provides API-specific do
 
 All new **leads** are created by the user via the NewLeadForm modal rendered by the **+** button located at the top of the page.
 
-All new **transactions** are created by the user via the **NewsRoomForm** modal rendered by the **Create Transaction** button located in each Lead component. All fields (name, transaction side, address, city, country, state, and zip code) are required and must pass field validation until the submit button is enabled. It is important to note that not all countries and states are supported by the DocuSign Rooms API. The supported ones may be obtained via the [GetCountries](https://developers.docusign.com/docs/rooms-api/reference/GlobalResources/Countries/GetCountries) and [GetStates](https://developers.docusign.com/docs/rooms-api/reference/GlobalResources/States/GetStates) API calls. The formData along with the lead data is sent to the back end to construct and send the CreateRoom API call. Upon success, the Rooms page is rendered to the user, with their newly created room showing in the top-left corner. The steps to use the [CreateRoom](https://developers.docusign.com/docs/rooms-api/reference/Rooms/Rooms/CreateRoom) API call are shown below.
+All new **transactions** are created by the user via the **NewsRoomForm** modal rendered by the **Create Transaction** button located in each Lead component. All fields (name, transaction side, address, city, country, state, and zip code) are required and must pass field validation until the submit button is enabled. It is important to note that not all countries and states are supported by the Docusign Rooms API. The supported ones may be obtained via the [GetCountries](https://developers.docusign.com/docs/rooms-api/reference/GlobalResources/Countries/GetCountries) and [GetStates](https://developers.docusign.com/docs/rooms-api/reference/GlobalResources/States/GetStates) API calls. The formData along with the lead data is sent to the back end to construct and send the CreateRoom API call. Upon success, the Rooms page is rendered to the user, with their newly created room showing in the top-left corner. The steps to use the [CreateRoom](https://developers.docusign.com/docs/rooms-api/reference/Rooms/Rooms/CreateRoom) API call are shown below.
 1. Get the API Client and add the auth header:
     ```javascript
     var apiClient = new docusign.ApiClient({
