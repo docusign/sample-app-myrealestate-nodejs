@@ -23,7 +23,7 @@
   "author": "David Kennedy",
   "license": "MIT",
   "dependencies": {
-    "axios": "^1.6.7",
+    "axios": "^1.7.4",
     "body-parser": "^1.20.2",
     "concurrently": "^8.2.2",
     "cookie-parser": "^1.4.6",
@@ -32,7 +32,7 @@
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "csurf": "^1.11.0",
-    "docusign-esign": "6.5.1",
+    "docusign-esign": "8.0.0",
     "docusign-rooms": "2.0.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
@@ -41,17 +41,18 @@
     "helmet": "^7.1.0",
     "memorystore": "^1.6.7",
     "moment": "^2.30.1",
-    "mongoose": "^8.2.1",
-    "validator": "^13.11.0"
+    "mongoose": "^8.5.3",
+    "validator": "^13.12.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.4"
   },
   "overrides": {
     "got": "14.2.1",
     "passport-oauth2": "1.8.0",
     "pac-proxy-agent": "7.0.1",
-    "degenerator": "5.0.1"
+    "degenerator": "5.0.1",
+    "braces": "^3.0.3"
   },
   "optionalDependencies": {
     "fsevents": "^2.3.3"
