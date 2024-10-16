@@ -17,7 +17,7 @@ While this sample app does not display all of the features of the Rooms API, it 
 `npm version`
 If you get the current version or a message about a patch, you have Node.js installed. If not, you will need to install it.
 2. Get a local copy of this repo. This can be done via downloading the repo or cloning the repo on your computer.
-3. If you do not already have one, create a [Docusign developer account](https://go.docusign.com/o/sandbox/).
+3. If you do not already have one, create a [Docusign developer account](https://www.docusign.com/developers/sandbox).
 4. Open up a command-line window and change to the room-sample-app folder.
 5. In the root folder, create two files: a .env file and a private.key file.
 6. Set up the .env file and the private.key file:
