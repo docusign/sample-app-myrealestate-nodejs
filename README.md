@@ -35,8 +35,9 @@ If you get the current version or a message about a patch, you have Node.js inst
       PRIVATE_KEY_LOCATION=private.key
       TARGET_ACCOUNT_ID=false
       DS_OAUTH_SERVER=https://account-d.docusign.com
-      BACKEND_APP_URL=http://localhost:3000
-      REACT_APP_SECRET={a unque string of your choice used to encrypT the local storage used by the web app}
+      API_URL=http://localhost:5000/api
+      FRONTEND_APP_URL=http://localhost:3000
+      REACT_APP_SECRET={a unique string of your choice used to encrypT the local storage used by the web app}
       ```
 7. Download all of the server Node dependencies by running this command in the root folder:
     `npm install`
