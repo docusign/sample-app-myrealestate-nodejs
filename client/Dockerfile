@@ -6,10 +6,9 @@ ARG API_URL=http://localhost/api
 
 RUN mkdir -p /home/vite/app
 RUN npm config set cache /tmp --global
-WORKDIR /home/vite
-COPY .env ./
 
 WORKDIR /home/vite/app
+COPY .env ./
 COPY ./client/package.json ./client/package-lock.json ./
 RUN npm ci
 
@@ -20,8 +19,6 @@ ENV NODE_ENV=${NODE_ENV}
 ENV API_URL=${API_URL}
 
 RUN npm run build
-
-#CMD ["npm", "run", "start"]
 
 # Run stage
 FROM --platform=linux/amd64 nginx:1.23.2-alpine
