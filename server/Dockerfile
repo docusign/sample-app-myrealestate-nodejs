@@ -19,6 +19,8 @@ FROM --platform=linux/amd64 node:20.14-alpine
 RUN mkdir -p /home/node/app
 COPY --from=base /home/node /home/node
 WORKDIR /home/node/app
-EXPOSE 4000
+COPY .env ./
+COPY private.key ./
+EXPOSE 5000
 
 CMD ["npm", "run", "start"]

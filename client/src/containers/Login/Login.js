@@ -24,7 +24,7 @@ class Login extends Component {
     state = {
         showInfo: false
     }
-    
+
     modalToggleHandler = () => {
         this.setState((prevState, props) => ({
             showInfo: !prevState.showInfo
@@ -40,7 +40,7 @@ class Login extends Component {
 
         return (
             <div className={classes.Login} style={backgroundStyle}>
-                <Backdrop show={this.state.showInfo} click={this.modalToggleHandler}/>
+                <Backdrop show={this.state.showInfo} click={this.modalToggleHandler} />
                 <div className={classes.LoginContent}>
                     <div className={classes.MessageBox}>
                         <h1> {textContent.login.title} </h1>
@@ -54,14 +54,14 @@ class Login extends Component {
                         <a className={classes.GithubLink} href={textContent.links.github} target='_blank' rel="noopener noreferrer">
                             {textContent.login.GitHub} <img src={LinkImage} alt="Github Icon"></img></a>
                     </div>
-                    
+
                 </div>
                 <SandboxBanner />
                 <Footer />
             </div>
         )
     }
-    
+
     /*
         Click handler for the agent and broker login buttons.
 
@@ -69,10 +69,10 @@ class Login extends Component {
     login = async (role) => {
         try {
             //get the jwt stored in session cookie
-            let loginReq = await axios.get('/auth/login');
-
+            const apiUrl = process.env.REACT_APP_API_URL;
+            let loginReq = await axios.get(`${apiUrl}/auth/login`);
             //if status is 210, redirect the user to the constent page
-            if(loginReq.status === 210) {
+            if (loginReq.status === 210) {
                 window.location = loginReq.data;
             }
             //switch the role

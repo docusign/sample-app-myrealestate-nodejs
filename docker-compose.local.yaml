@@ -9,6 +9,7 @@ services:
       dockerfile: ./client/Dockerfile
       args:
         NODE_ENV: dev
+        REACT_APP_API_URL: "http://localhost/api"
     env_file:
       - .env
     volumes:
