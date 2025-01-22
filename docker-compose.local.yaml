@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  frontend:
+    container_name: nginx-frontend-app
+    image: myrealestate_frontend
+    restart: always
+    build:
+      context: .
+      dockerfile: ./client/Dockerfile
+      args:
+        NODE_ENV: dev
+        REACT_APP_API_URL: "http://localhost/api"
+    env_file:
+      - .env
+    volumes:
+      - ./infra/nginx/conf/:/etc/nginx/conf.d/:ro
+    ports:
+      - 80:80
+      - 443:443
+
+  backend:
+    container_name: node-app
+    image: myrealestate_backend
+    restart: always
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=dev

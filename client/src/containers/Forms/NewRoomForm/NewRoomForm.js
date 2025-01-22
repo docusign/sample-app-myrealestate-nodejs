@@ -281,7 +281,8 @@ class NewRoomForm extends Component {
         roomData.postalCode = this.state.formData.zipcode.value;
 
         // We need to return the room ID of the room that was added so that it can be added to the contact
-        axios.post('/rooms', roomData, { withCredentials: true })
+        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+        axios.post(`${apiUrl}/rooms`, roomData, { withCredentials: true })
             .then(async roomResponse => {
                 const room = roomResponse.data;
                 // Get leads from local storage

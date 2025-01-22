@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Room from '../../components/Room/Room';
@@ -29,46 +29,48 @@ class Rooms extends Component {
 
     //Click Handler of Open and Closed Transaction buttons
     transactionButtonClickHandler = (value) => {
-        this.setState({open: value});
+        this.setState({ open: value });
     }
-    
+
     render() {
         let rooms = null;
-        if(!this.state.loaded) {
+        if (!this.state.loaded) {
             rooms = (
                 <div className={classes.Rooms}>
-                    <Spinner component="Rooms"/>
-                </div>   
+                    <Spinner component="Rooms" />
+                </div>
             )
         } else if (this.state.rooms) {
             rooms = this.state.rooms.map((room, index) => {
                 return (
-                    <Room room={this.state.rooms[index]} key={index} click={this.props.click.bind(this, this.state.rooms[index])}/>
+                    <Room room={this.state.rooms[index]} key={index} click={this.props.click.bind(this, this.state.rooms[index])} />
                 )
             });
-        } 
+        }
         return (
             <Fragment>
-                <Backdrop show={this.state.displayInfo} click={this.infoToggleHandler}/>
+                <Backdrop show={this.state.displayInfo} click={this.infoToggleHandler} />
                 <div className={classes.Rooms}>
-                    <div className = {classes.TitleBar}>
-                            <h1 id={classes.Title} className={classes.TitleHeader}>{textContent.rooms.title}</h1> 
-                            <Info show={this.state.displayInfo} click={this.infoToggleHandler} page="Rooms"></Info>
-                        </div>
+                    <div className={classes.TitleBar}>
+                        <h1 id={classes.Title} className={classes.TitleHeader}>{textContent.rooms.title}</h1>
+                        <Info show={this.state.displayInfo} click={this.infoToggleHandler} page="Rooms"></Info>
+                    </div>
                     <div className={classes.RoomsFormatter}>
                         {rooms}
                     </div>
                 </div>
             </Fragment>
-       )
+        )
     }
 
     componentDidMount() {
-        axios.get('/rooms', {withCredentials: true})
+        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+        console.log('apiUrl', apiUrl)
+        axios.get(`${apiUrl}/rooms`, { withCredentials: true })
             .then(rooms => {
-               this.setState({
-                   rooms: rooms.data.rooms,
-                   loaded: true
+                this.setState({
+                    rooms: rooms.data.rooms,
+                    loaded: true
                 });
             })
             .catch(error => {

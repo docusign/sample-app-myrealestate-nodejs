@@ -9,7 +9,7 @@ const helmet = require('helmet'); // https://expressjs.com/en/advanced/best-prac
 const moment = require('moment'); //https://www.npmjs.com/package/moment
 const csrf = require('csurf'); // http://expressjs.com/en/resources/middleware/csurf.html
 const path = require('path');
-const {updateToken} = require('./controllers/authController');
+const { updateToken } = require('./controllers/authController');
 
 
 //route imports
@@ -17,7 +17,7 @@ const leadRouter = require('./routes/leadRouter');
 const authRouter = require('./routes/authRouter');
 const roomsRouter = require('./routes/roomsRouter');
 
-const port =  process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 const maxSessionMinutes = 180;
 // const csrfProtection = csrf({ cookie: true });
 
@@ -28,39 +28,44 @@ const app = express()
   .use(cookieParser())
   .use(cookieSession({
     name: 'roomApp',
-    maxAge: 1000*60*60*24*30, //1 month cookie
+    maxAge: 1000 * 60 * 60 * 24 * 30, //1 month cookie
     keys: [process.env.SESSION_SECRET],
     httpOnly: true,
     signed: true,
     secure: false,
     overwrite: true
   }))
-  //Refresh the token if expired
-  app.use(async (req, res, next) => {
-    if(req.session.token) {
-      const currentTime = moment();
-      //1 minute buffer 
-      const minuteBuffer = 1;
-      //check if you need to update the token
-      const update = moment(req.session.tokenExpirationTimestamp).subtract(
-        minuteBuffer, 'm').isBefore(currentTime);
-      //only refresh if expired
-      if (update) {
-        console.log("Update is required");
-        await updateToken(req)
-      }
+//Refresh the token if expired
+app.use(async (req, res, next) => {
+  if (req.session.token) {
+    const currentTime = moment();
+    //1 minute buffer 
+    const minuteBuffer = 1;
+    //check if you need to update the token
+    const update = moment(req.session.tokenExpirationTimestamp).subtract(
+      minuteBuffer, 'm').isBefore(currentTime);
+    //only refresh if expired
+    if (update) {
+      console.log("Update is required");
+      await updateToken(req)
     }
-    next();
+  }
+  next();
 })
 
+const corsOptions = {
+  origin: process.env.FRONTEND_APP_URL || 'http://localhost:3000'
+}
+app.use(cors(corsOptions));
+
 //backend routing
-app.use('/leads', leadRouter);
-app.use('/auth', authRouter);
-app.use('/rooms', roomsRouter);
+app.use('/api/leads', leadRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/rooms', roomsRouter);
 
 console.log("Node env: " + process.env.NODE_ENV);
 //serve static assets if in production
-if(process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   console.log("We are in production");
   app.use(express.static('client/build'));
 
