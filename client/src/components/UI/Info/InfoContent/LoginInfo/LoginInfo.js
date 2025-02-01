@@ -6,7 +6,7 @@ import classes from '../InfoContent.module.css';
 const loginInfo = (props) => (
     <div className={classes.Form}>
         <h1 className={classes.Title}>{textContent.login.info.title}</h1>
-        <p>{textContent.login.info.GithubSource1} <a href="https://github.com/docusign/sample-app-myrealestate-nodejs/blob/main/controllers/authController.js" target="_blank" rel="noopener noreferrer">{textContent.login.info.GithubSource2}</a> {textContent.login.info.GithubSource3}</p>
+        <p>{textContent.login.info.GithubSource1} <a href="https://github.com/docusign/sample-app-realestate-nodejs/blob/main/controllers/authController.js" target="_blank" rel="noopener noreferrer">{textContent.login.info.GithubSource2}</a> {textContent.login.info.GithubSource3}</p>
         <p>{textContent.login.info.paragraph1}</p>
         <ul>
             <li>{textContent.login.info.listItem1}</li>

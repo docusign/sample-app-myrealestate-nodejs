@@ -1,6 +1,6 @@
 {
     "login": {
-        "title": "Welcome to the MyRealEstate Sample Application",
+        "title": "Welcome to the Real Estate Sample App",
         "paragraph": "This app was designed to showcase the potential integration of the Docusign Rooms API into a RealEstate CRM. This application is open-source and all of the code is located in our GitHub repository.",
         "loginButton": "Try the App",
         "GitHub": "Go to GitHub",
@@ -34,9 +34,6 @@
         "paragraph": "Docusign helps organizations connect and automate how they prepare, sign, act on, and manage agreements.",
         "createbutton": "Create Developer Account",
         "learnmore": "Learn More"
-    },
-    "footer": {
-        "message": "2024 Docusign Inc."
     },
     "toolbar": {
         "title": "My Real Estate",
@@ -189,7 +186,7 @@
 
     },
     "links" : {
-        "github": "https://github.com/docusign/sample-app-myrealestate-nodejs",
+        "github": "https://github.com/docusign/sample-app-realestate-nodejs",
         "createsandbox": "https://go.docusign.com/o/sandbox/",
         "devcenter": "https://developers.docusign.com/"
     }

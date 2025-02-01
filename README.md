@@ -6,11 +6,11 @@
 - [Room page](#room-page)
 - [Licenses](#licenses)
 
-Welcome to the Docusign sample app MyRealEstate. This web application was designed to demonstrate the Docusign Rooms API using a sample real estate CRM integration. For more information, see the [Rooms API](https://developers.docusign.com/docs/rooms-api) on the Docusign Developer Center.
+Welcome to the Real Estate Sample App. This web application was designed to demonstrate the Docusign Rooms API using a sample real estate CRM integration. For more information, see the [Rooms API](https://developers.docusign.com/docs/rooms-api) on the Docusign Developer Center.
 
 While this sample app does not display all of the features of the Rooms API, it does show you how simple and powerful it can be to integrate Rooms features into an existing CRM platform.
 
-[MyRealEstate](https://myrealestate.sampleapps.docusign.com/) is also deployed on the web!
+The [Real Estate Sample App](https://realestate.sampleapps.docusign.com/) is also deployed on the web!
 
 ## Local installation and deployment
 1. If you do not already have Node.js installed on your computer, install it from the [Node.js website](https://nodejs.org/en/download/). If you are not sure whether you already have Node.js installed, open up a command-line window and enter:
@@ -234,4 +234,4 @@ The **Room** page allows the user to modify the information about a specific roo
       });
 ````
 ## Licenses
-This repository uses the MIT License. See the [LICENSE](https://github.com/docusign/sample-app-myrealestate-nodejs/blob/main/LICENSE) file for more information.
+This repository uses the MIT License. See the [LICENSE](https://github.com/docusign/sample-app-realestate-nodejs/blob/main/LICENSE) file for more information.
