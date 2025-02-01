@@ -30,13 +30,11 @@
         }
     },
     "sandboxbanner": {
-        "title": "Docusign: It's time to agree better",
-        "paragraph": "Docusign helps organizations connect and automate how they prepare, sign, act on, and manage agreements.",
         "createbutton": "Create Developer Account",
         "learnmore": "Learn More"
     },
     "toolbar": {
-        "title": "My Real Estate",
+        "title": "Real Estate",
         "message": "Hello person! "
     },
     "sidedrawer": {
