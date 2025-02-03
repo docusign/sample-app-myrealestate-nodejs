@@ -8,7 +8,7 @@ const leadsInfo = (props) => {
     return (
         <div className={classes.Form}>
             <h1 className={classes.Title}>{info.title}</h1>
-            <p>{info.GithubSource1} <a href="https://github.com/docusign/sample-app-myrealestate-nodejs/blob/main/controllers/roomsController.js#L50" target="_blank" rel="noopener noreferrer">{info.GithubSource2}</a> {info.GithubSource3}</p>
+            <p>{info.GithubSource1} <a href="https://github.com/docusign/sample-app-realestate-nodejs/blob/main/controllers/roomsController.js#L50" target="_blank" rel="noopener noreferrer">{info.GithubSource2}</a> {info.GithubSource3}</p>
             <p>{info.paragraph1}</p>
             <ul>
                 <li>{info.listItem1part1} <a href='https://developers.docusign.com/docs/rooms-api/rooms101/' target='_blank' rel="noopener noreferrer">{info.listItem1part2}</a></li>
